@@ -1,15 +1,18 @@
 import React from 'react'
+import { connect } from "react-redux"
+
 import MarketImage from "../../../assets/authentication/market.png"
 import Logo from "../../../assets/authentication/logo.png"
 import WaveShapeImage from "../../../assets/authentication/path_2.jpg"
 import BottomDisplay from "../../../assets/authentication/bottomdisplay.jpg"
 
-import TextInput from "../../../shared/components/TextInput/Basic"
-import Button from "../../../shared/components/Button/Basic"
 
-import { Grid } from "@material-ui/core"
+import { useSelector } from "react-redux"
+import AskContact from '../components/AskContact'
+import AskOTP from '../components/AskOTP'
 
-function SignupPage() {
+function SignupPage(props) {
+  const { state } = props
   return (
     <div>
       <img width="100%" src={MarketImage} />
@@ -22,39 +25,24 @@ function SignupPage() {
       <div style={{ height: "100%", backgroundColor: "#ff5656" }} >
         <img width="100%" src={WaveShapeImage} />
         <div className="text-center text-light" >
-          <div style={{ fontWeight: 600, fontSize: 30 }} >Welcome,</div>
-          <div style={{ fontWeight: 200, fontSize: 20 }} >Login to access the account</div>
-          <br />
-          <br />
-          <Grid container >
-            <Grid item xs={1} ></Grid>
-            <Grid item xs={10} >
-              <TextInput
-                fullWidth
-                label={"Contact No"}
-                placeholder={"Enter your Contact Number"}
-              />
-            </Grid>
-            <Grid item xs={1} ></Grid>
-          </Grid>
-          <br />
-          <br />
-          <Grid container >
-            <Grid item xs={1} ></Grid>
-            <Grid item xs={10} >
-              <Button
-                fullWidth
-              >
-                Proceed
-          </Button>
-            </Grid>
-            <Grid item xs={1} ></Grid>
-          </Grid>
-          <br />
-          <br />
-          <br />
-          <br />
+          {
+            state.askingContact ?
+              <AskContact />
+              :
+              null
+          }
+          {
+            state.askingOTP ?
+              <AskOTP />
+              :
+              null
+          }
 
+
+          <br />
+          <br />
+          <br />
+          <br />
           <img width="100%" src={BottomDisplay} />
         </div>
       </div>
@@ -62,4 +50,10 @@ function SignupPage() {
   )
 }
 
-export default SignupPage
+const mapStateToProps = (state, ownProps) => {
+  return {
+    state: state.authentication.signup
+  }
+}
+
+export default connect(mapStateToProps, null)(SignupPage)
