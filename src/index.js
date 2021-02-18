@@ -3,10 +3,37 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider, useSelector } from "react-redux";
+import store from "./store/Index/index"
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffffff',
+    },
+    secondary: {
+      main: '#ffffff',
+      contrastText: '#d50000',
+    },
+    error: {
+      main: '#f44336',
+      dark: '#d50000',
+      contrastText: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: 'Montserrat, sans-serif',
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ThemeProvider theme={theme} >
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
