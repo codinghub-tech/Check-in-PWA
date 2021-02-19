@@ -10,9 +10,14 @@ import BottomDisplay from "../../../assets/authentication/bottomdisplay.jpg"
 import { useSelector } from "react-redux"
 import AskContact from '../components/AskContact'
 import AskOTP from '../components/AskOTP'
+import AskProfileDetails from '../components/AskProfileDetails'
+import LandingPage from '../components/LandingPage'
 
 function SignupPage(props) {
+
   const { state } = props
+  if (state.showLandingPage)
+    return <LandingPage />
   return (
     <div>
       <img width="100%" src={MarketImage} />
@@ -34,6 +39,12 @@ function SignupPage(props) {
           {
             state.askingOTP ?
               <AskOTP />
+              :
+              null
+          }
+          {
+            state.askingProfileDetails ?
+              <AskProfileDetails />
               :
               null
           }

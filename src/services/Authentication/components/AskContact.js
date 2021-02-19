@@ -9,10 +9,10 @@ import { _set_state } from '../middleware'
 function AskContact(props) {
   const { setState } = props
   const handleProceed = () => {
-    console.log(props);
     setState({
+      askingProfileDetails: false,
+      askingContact: false,
       askingOTP: true,
-      askingContact: false
     })
   }
   return (

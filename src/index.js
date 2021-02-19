@@ -23,7 +23,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: 'Montserrat, sans-serif',
+    fontFamily: "Josefin Sans, sans-serif",
   }
 });
 

@@ -1,9 +1,10 @@
 import ACTION from "../actions/actionTypes"
 
 const initState = {
-  askingContact: true,
+  askingContact: false,
   askingOTP: false,
-  askingDetails: false
+  askingDetails: false,
+  showLandingPage: true
 }
 
 export const SignupReducer = (state = initState, action) => {
