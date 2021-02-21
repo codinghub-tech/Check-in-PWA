@@ -4,11 +4,12 @@ import { Grid } from "@material-ui/core"
 import BoxInput from "../../../shared/components/TextInput/BoxInput"
 import TextInput from "../../../shared/components/TextInput/Basic"
 import Button from "../../../shared/components/Button/Basic"
+import { useHistory } from 'react-router-dom'
 
 function AskProfileDetails(props) {
-
+  const history=useHistory()
   const handleProceed = () => {
-
+       history.push("/Home")
   }
 
   return (
