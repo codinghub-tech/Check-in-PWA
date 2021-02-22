@@ -10,7 +10,7 @@ function HomePage() {
 
     return (
         <div>
-            <div >
+            <div style={{ margin: "20px" }} >
                 {/* <div style={{ position: "absolute" }}>  <MenuItem /></div> */}
                 <Carousel />
                 <Services />

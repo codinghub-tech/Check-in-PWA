@@ -32,6 +32,7 @@ function LandingPage(props) {
         <Grid container >
           <Grid item xs={1} ></Grid>
           <Grid item xs={10} >
+
             <img
               src={WhiteLogo}
               width={200}
@@ -46,24 +47,32 @@ function LandingPage(props) {
               Ordering, service, payments all at one place.
           </div>
             <br />
-            <Button
-              fullWidth
-              onClick={openApp}
-            >
-              Download for Android
-          </Button>
+            <Grid spacing={3} container >
+              <Grid item sm={6} xs={12} >
+                <Button
+                  fullWidth
+                  onClick={openApp}
+                >
+                  Download for Android
+                </Button>
+              </Grid>
+              <Grid item sm={6} xs={12} >
+                <Button
+                  fullWidth
+                  onClick={handleSkip}
+                >
+                  Skip
+                </Button>
+              </Grid>
+            </Grid>
             <br />
             <img
               src={MobileApp}
+              height={window.innerHeight * 0.8 + "px"}
             />
 
             <br />
-            <Button
-              fullWidth
-              onClick={handleSkip}
-            >
-              Skip
-          </Button>
+
           </Grid>
           <Grid item xs={1} ></Grid>
         </Grid>
