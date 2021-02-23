@@ -68,9 +68,10 @@ export default function TextFieldSizes() {
                 </div>
             </form>
 
-            <div style={{ display: "flex", overflow: "scroll" }} >
+            <div style={{ display: "flex", overflow: "scroll", marginLeft: "0px" }} >
 
                 <ScrollMenu
+                    style={{ marginLeft: "0" }}
                     data={items.map(res =>
                         <Card style={{ height: "90px", width: "100px", margin: "20px", marginRight: "10px", }}>
                             <CardMedia
