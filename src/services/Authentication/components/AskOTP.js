@@ -18,7 +18,7 @@ function AskOTP(props) {
 
   return (
     <div>
-      <div style={{ fontWeight: 200, fontSize: 20 }} >OTP sent to 1234567899</div>
+      <div style={{ fontWeight: 600, fontSize: 20 }} >OTP sent to 1234567899</div>
       <br />
       <br />
       <Grid container >
@@ -50,7 +50,7 @@ function AskOTP(props) {
         <Grid item xs={1} ></Grid>
       </Grid>
       <br />
-      <div style={{ fontWeight: 200, fontSize: 15 }} >
+      <div style={{ fontWeight: 600, fontSize: 15 }} >
         Didn’t recieve the verification OTP? Resend Again
       </div>
 

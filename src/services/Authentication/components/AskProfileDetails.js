@@ -7,14 +7,14 @@ import Button from "../../../shared/components/Button/Basic"
 import { useHistory } from 'react-router-dom'
 
 function AskProfileDetails(props) {
-  const history=useHistory()
+  const history = useHistory()
   const handleProceed = () => {
-       history.push("/Home")
+    history.push("/Home")
   }
 
   return (
     <div>
-      <div style={{ fontWeight: 200, fontSize: 15 }} >One step away from your first 500 Checkin CHIPS</div>
+      <div style={{ fontWeight: 700, fontSize: 15 }} >One step away from your first 500 Checkin CHIPS</div>
       <br />
       <br />
       <Grid spacing={2} container >
@@ -46,7 +46,7 @@ function AskProfileDetails(props) {
         <Grid item xs={1} ></Grid>
       </Grid>
       <br />
-      <div style={{ fontWeight: 200, fontSize: 15 }} >
+      <div style={{ fontWeight: 600, fontSize: 15 }} >
         Earn 1000 Checkin Chips more with a, <a href="#" className="my-a" >Referal Code</a>
       </div>
 
