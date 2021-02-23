@@ -41,7 +41,7 @@ function LandingPage(props) {
             <br />
             <div style={{ fontWeight: 600, fontSize: 25 }} >Experience is everything</div>
             <br />
-            <div className="fw-600 fs-25" >
+            <div className="fw-600 fs-25" style={{ lineHeight: "20px" }}>
               Checkin is the only thing you need while eating
               out at Restaurant or staying in Hotel.
               Ordering, service, payments all at one place.
@@ -68,7 +68,7 @@ function LandingPage(props) {
             <br />
             <img
               src={MobileApp}
-              height={window.innerHeight * 0.8 + "px"}
+              height={window.innerHeight * 0.7 + "px"}
             />
 
             <br />

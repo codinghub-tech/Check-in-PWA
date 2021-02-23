@@ -73,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         borderRadius: '100px',
         height: '100%',
-        backgroundColor: '#ff5656'
+        backgroundColor: '#ff5656',
+        textTransform: 'none'
     },
 }));
 

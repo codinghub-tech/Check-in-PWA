@@ -5,6 +5,7 @@ function Basic({ children, ...details }) {
   return (
     <div>
       <Button
+        style={{ textTransform: 'none' }}
         color="secondary"
         variant="contained"
         {...details}

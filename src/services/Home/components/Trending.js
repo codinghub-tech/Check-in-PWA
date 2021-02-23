@@ -49,7 +49,7 @@ export default function Trending() {
             </div>
             <div style={{ display: "flex", overflow: "scroll", marginLeft: "0" }} >
                 <ScrollMenu
-                    style={{ marginLeft: "0" }}
+
                     data={items.map(res =>
                         <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
                             <CardMedia

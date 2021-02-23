@@ -10,10 +10,10 @@ import ScrollMenu from "react-horizontal-scrolling-menu";
 
 
 export default function TextFieldSizes() {
-    const history = useHistory()
-    const handleService = () => {
-        history.push("/Home/Roomservice")
-    }
+    // const history = useHistory()
+    // const handleService = () => {
+    //     history.push("/Home/Roomservice")
+    // }
     let items = [
         {
             services: "RoomService",
@@ -68,17 +68,17 @@ export default function TextFieldSizes() {
                 </div>
             </form>
 
-            <div style={{ display: "flex", overflow: "scroll", marginLeft: "0px" }} >
+            <div style={{ display: "flex", overflow: "scroll", marginTop: "0px" }} >
 
                 <ScrollMenu
-                    style={{ marginLeft: "0" }}
+
                     data={items.map(res =>
                         <Card style={{ height: "90px", width: "100px", margin: "20px", marginRight: "10px", }}>
                             <CardMedia
                                 style={{ height: "30px", margin: "20px", marginBottom: "0", borderRadius: "10px" }}
                                 image={res.imageUrl}
                                 title="Contemplative Reptile"
-                                onClick={handleService}
+                            // onClick={handleService}
                             />
                             <Typography>
                                 <p style={{ fontSize: 14, marginLeft: "6px", color: "#000000" }}>  {res.services}</p>
