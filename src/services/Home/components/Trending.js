@@ -47,31 +47,33 @@ export default function Trending() {
             <div>
                 <h3>Trending Dishes</h3>
             </div>
-            <div style={{ display: "flex", overflow: "scroll" }} >
-                <ScrollMenu data={items.map(res =>
-                    <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
-                        <CardMedia
-                            style={{ height: "70px" }}
-                            image={res.imageUrl}
-                            title="Item"
-                        />
-                        <Typography variant="subtitle1" color="textSecondary">
-                            <div style={{ display: "flex" }}>   <div >{res.type === "veg" ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                                <div style={{ fontSize: 14, marginLeft: "6px", marginTop: "2px", marginBottom: "0", color: "#000000" }}> {res.itemname}</div>
-                                <div></div>
-                            </div>
-                        </Typography>
+            <div style={{ display: "flex", overflow: "scroll", marginLeft: "0" }} >
+                <ScrollMenu
+                    style={{ marginLeft: "0" }}
+                    data={items.map(res =>
+                        <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
+                            <CardMedia
+                                style={{ height: "70px" }}
+                                image={res.imageUrl}
+                                title="Item"
+                            />
+                            <Typography variant="subtitle1" color="textSecondary">
+                                <div style={{ display: "flex" }}>   <div >{res.type === "veg" ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
+                                    <div style={{ fontSize: 14, marginLeft: "6px", marginTop: "2px", marginBottom: "0", color: "#000000" }}> {res.itemname}</div>
+                                    <div></div>
+                                </div>
+                            </Typography>
 
-                        <Typography variant="subtitle1" color="textSecondary">
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                <div style={{ fontSize: 14, marginLeft: "20px", marginTop: "0", color: "#000000" }}>&#8377; {res.rate}</div>
-                                {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
-                                <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
-                                {/* </IconButton> */}
-                            </div>
-                        </Typography>
-                    </Card>
-                )} />
+                            <Typography variant="subtitle1" color="textSecondary">
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <div style={{ fontSize: 14, marginLeft: "20px", marginTop: "0", color: "#000000" }}>&#8377; {res.rate}</div>
+                                    {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
+                                    <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
+                                    {/* </IconButton> */}
+                                </div>
+                            </Typography>
+                        </Card>
+                    )} />
             </div>
 
         </div>
