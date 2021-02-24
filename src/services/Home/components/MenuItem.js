@@ -64,14 +64,14 @@ export default function OpenIconSpeedDial() {
                     onOpen={handleOpen}
                     open={open}
                 >
-                    {actions.map((action) => (
+                    {/* {actions.map((action) => (
                         <SpeedDialAction
                             key={action.name}
                             icon={action.icon}
                             tooltipTitle={action.name}
                             onClick={handleClose}
                         />
-                    ))}
+                    ))} */}
                 </SpeedDial>
             </div>
             {/* <div>

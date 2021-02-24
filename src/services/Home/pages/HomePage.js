@@ -15,7 +15,7 @@ function HomePage() {
     return (
         <div>
             <div >
-                <div style={{ position: "absolute", marginLeft: windowWidth * 0.8 + "px", marginTop: windowHeight * 0.35 + "px" }}>  <MenuItem /></div>
+                <div style={{ position: "absolute", marginLeft: windowWidth * 0.8 + "px", marginTop: windowHeight * 0.8 + "px" }}>  <MenuItem /></div>
                 <Carousel />
                 <Services />
                 <OrderStatus />
