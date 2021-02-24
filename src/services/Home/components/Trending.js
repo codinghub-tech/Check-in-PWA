@@ -43,7 +43,7 @@ export default function Trending() {
     ]
 
     return (
-        <div>
+        <div style={{ marginBottom: "50px" }}>
             <div>
                 <h3>Trending Dishes</h3>
             </div>

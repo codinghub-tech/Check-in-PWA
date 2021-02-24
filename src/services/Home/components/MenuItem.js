@@ -10,19 +10,21 @@ import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EditIcon from '@material-ui/icons/Edit';
-
+import BillingBottomBar from '../components/BillingBottomBar'
+import MenuImage from '../../../assets/home/menu.svg'
 const useStyles = makeStyles((theme) => ({
     root: {
         transform: 'translateZ(0px)',
         flexGrow: 1,
-        height: window.innerHeight * 2 + "px",
-        width: window.innerWidth * 2 + "px",
+        // height: window.innerHeight * 2 + "px",
+        // width: window.innerWidth * 2 + "px",
+        position: "fixed",
+        zIndex: 1000,
 
     },
     speedDial: {
-        position: "relative"
-        // bottom: theme.spacing(2),
-        // right: theme.spacing(2),
+        position: "absolute"
+        // position: "fixed"
     },
 }));
 
@@ -57,7 +59,7 @@ export default function OpenIconSpeedDial() {
                 <SpeedDial
                     ariaLabel="SpeedDial openIcon example"
                     className={classes.speedDial}
-                    icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+                    icon={<img style={{ height: "62px", width: "62px", borderRadius: "50%" }} src={MenuImage} />}
                     onClose={handleClose}
                     onOpen={handleOpen}
                     open={open}
@@ -72,7 +74,9 @@ export default function OpenIconSpeedDial() {
                     ))}
                 </SpeedDial>
             </div>
-
+            {/* <div>
+                <BillingBottomBar />
+            </div> */}
         </div>
     );
 }
