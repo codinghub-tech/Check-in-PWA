@@ -20,8 +20,8 @@ function Example() {
     ]
 
     return (
-        <div style={{ margin: "30px", }}>
-            <Carousel animation="slide">
+        <div style={{ marginTop: '10px', marginLeft: '10px', }}>
+            <Carousel style={{ zindex: 1000 }} animation="slide">
                 {
                     items.map((item, i) => <Item key={i} item={item} />)
                 }

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         // height: window.innerHeight * 2 + "px",
         // width: window.innerWidth * 2 + "px",
         position: "fixed",
-        zIndex: 1000,
+        zIndex: 2,
 
     },
     speedDial: {
@@ -39,9 +39,9 @@ const actions = [
 
 export default function OpenIconSpeedDial() {
     const history = useHistory()
-  const handleOpen = () => {
-    history.push("/Menu")
-  }
+    const handleOpen = () => {
+        history.push("/Menu")
+    }
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [hidden, setHidden] = React.useState(false);
@@ -60,6 +60,7 @@ export default function OpenIconSpeedDial() {
 
     return (
         <div className={classes.root}>
+
             <div >
                 <SpeedDial
                     ariaLabel="SpeedDial openIcon example"

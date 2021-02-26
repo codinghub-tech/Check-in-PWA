@@ -44,7 +44,7 @@ export default function Trending() {
 
     return (
         <div style={{ marginBottom: "50px" }}>
-            <div>
+            <div style={{ marginLeft: '10px' }}>
                 <h3>Trending Dishes</h3>
             </div>
             <div style={{ display: "flex", overflow: "scroll", marginLeft: "0" }} >

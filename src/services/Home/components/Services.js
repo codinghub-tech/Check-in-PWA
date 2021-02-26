@@ -7,7 +7,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
 import ScrollMenu from "react-horizontal-scrolling-menu";
-
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import SendIcon from '@material-ui/icons/Send';
 
 export default function TextFieldSizes() {
     // const history = useHistory()
@@ -41,20 +45,20 @@ export default function TextFieldSizes() {
             imageUrl: "https://image.freepik.com/free-vector/cute-tissue-box-cartoon-icon-illustration-healthy-mascot-character-health-medical-icon-concept-isolated_138676-889.jpg"
         }
     ]
-
+    let windowWidth = window.innerWidth;
     return (
 
 
         <div>
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                <div ><h3>Services</h3></div>
+                <div style={{ marginLeft: '10px' }}><h3>Services</h3></div>
                 <div ><RoundedButton size="small" style={{ backgroundColor: "#0295aa" }}>My Requests</RoundedButton></div>
             </div>
             <form noValidate autoComplete="off">
 
 
                 <div>
-                    <TextField
+                    {/* <TextField
                         // className={classes.inputfield}
                         label="Search"
                         id="outlined-size-small"
@@ -63,9 +67,20 @@ export default function TextFieldSizes() {
                         variant="outlined"
                         size="small"
                         fullWidth
-                    />
+                    /> */}
+                    <Paper component="form" style={{ borderRadius: '20px', margin: '5px', height: '43px', marginTop: '-10px' }}>
 
+                        <InputBase
+                            placeholder="Ask for Something"
+                            style={{ marginLeft: '10px' }}
+                        />
+                        <IconButton type="submit" aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px', marginBottom: '5px' }} >
+                            <SendIcon style={{ color: '#ff5656' }} />
+                        </IconButton>
+
+                    </Paper>
                 </div>
+
             </form>
 
             <div style={{ display: "flex", overflow: "scroll", marginTop: "0px" }} >
