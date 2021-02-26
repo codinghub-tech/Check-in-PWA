@@ -11,7 +11,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import EditIcon from '@material-ui/icons/Edit';
 import BillingBottomBar from '../components/BillingBottomBar'
-import MenuImage from '../../../assets/home/menu.svg'
+import MenuImage from '../../../assets/home/menu.svg';
+import { useHistory } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
     root: {
         transform: 'translateZ(0px)',
@@ -37,6 +38,10 @@ const actions = [
 ];
 
 export default function OpenIconSpeedDial() {
+    const history = useHistory()
+  const handleOpen = () => {
+    history.push("/Menu")
+  }
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [hidden, setHidden] = React.useState(false);
@@ -45,13 +50,13 @@ export default function OpenIconSpeedDial() {
         setHidden((prevHidden) => !prevHidden);
     };
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
+    // const handleOpen = () => {
+    //     setOpen(true);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     return (
         <div className={classes.root}>
@@ -60,7 +65,7 @@ export default function OpenIconSpeedDial() {
                     ariaLabel="SpeedDial openIcon example"
                     className={classes.speedDial}
                     icon={<img style={{ height: "62px", width: "62px", borderRadius: "50%" }} src={MenuImage} />}
-                    onClose={handleClose}
+                    // onClose={handleClose}
                     onOpen={handleOpen}
                     open={open}
                 >
