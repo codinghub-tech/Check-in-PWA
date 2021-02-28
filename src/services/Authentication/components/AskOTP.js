@@ -18,41 +18,53 @@ function AskOTP(props) {
 
   return (
     <div>
-      <div style={{ fontWeight: 600, fontSize: 20 }} >OTP sent to 1234567899</div>
       <br />
       <br />
-      <Grid container >
-        <Grid item xs={3} >
-          <BoxInput />
+      <Grid spacing={3} container >
+        <Grid item xs={1} >
+
         </Grid>
-        <Grid item xs={3} >
-          <BoxInput />
-        </Grid>
-        <Grid item xs={3} >
-          <BoxInput />
-        </Grid>
-        <Grid item xs={3} >
-          <BoxInput />
-        </Grid>
-      </Grid>
-      <br />
-      <br />
-      <Grid container >
-        <Grid item xs={1} ></Grid>
         <Grid item xs={10} >
-          <Button
-            fullWidth
-            onClick={handleVerify}
-          >
-            Verify
+          <Grid spacing={3} container >
+            <Grid item xs={12} >
+              <div style={{ fontSize: 20, textAlign: "left" }} ><span style={{ fontWeight: 100 }}>OTP sent to </span>1234567899</div>
+            </Grid>
+            <Grid item xs={12} >
+              <Grid spacing={3} container >
+                <Grid className="text-left" item xs={3} >
+                  <BoxInput />
+                </Grid>
+                <Grid className="text-left" item xs={3} >
+                  <BoxInput />
+                </Grid>
+                <Grid className="text-left" item xs={3} >
+                  <BoxInput />
+                </Grid>
+                <Grid className="text-left" item xs={3} >
+                  <BoxInput />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} >
+              <Button
+                fullWidth
+                onClick={handleVerify}
+              >
+                Verify
           </Button>
+            </Grid>
+            <Grid item xs={12} >
+              <div style={{ fontWeight: 400, fontSize: 12 }} >
+                Didn’t recieve the verification OTP? <a className="a-tag" href="#" >Resend Again</a>
+              </div>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={1} ></Grid>
+        <Grid item xs={1} >
+
+        </Grid>
       </Grid>
       <br />
-      <div style={{ fontWeight: 600, fontSize: 15 }} >
-        Didn’t recieve the verification OTP? Resend Again
-      </div>
 
     </div>
   )

@@ -22,10 +22,10 @@ function LandingPage(props) {
       askingOTP: false
     })
   }
-
+  document.body.style.backgroundColor = "#ff5656"
   return (
     <div className="h-100 text-light" >
-      <div className="bg-primary" >
+      <div>
         <br />
         <br />
 
@@ -41,7 +41,7 @@ function LandingPage(props) {
             <br />
             <div style={{ fontWeight: 600, fontSize: 25 }} >Experience is everything</div>
             <br />
-            <div className="fw-600 fs-25" style={{ lineHeight: "20px" }}>
+            <div className="fw-400 fs-25" style={{ lineHeight: "20px" }}>
               Checkin is the only thing you need while eating
               out at Restaurant or staying in Hotel.
               Ordering, service, payments all at one place.
@@ -66,10 +66,12 @@ function LandingPage(props) {
               </Grid>
             </Grid>
             <br />
-            <img
-              src={MobileApp}
-              height={window.innerHeight * 0.7 + "px"}
-            />
+            <div className="text-center" >
+              <img
+                src={MobileApp}
+                height={window.innerHeight * 0.7 + "px"}
+              />
+            </div>
 
             <br />
 
