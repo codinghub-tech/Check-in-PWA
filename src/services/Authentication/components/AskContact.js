@@ -28,6 +28,10 @@ function AskContact(props) {
             fullWidth
             label={"Contact No"}
             placeholder={"Enter your Contact Number"}
+            InputLabelProps={{
+              shrink: true,
+              style: { color: '#fff' },
+            }}
           />
         </Grid>
         <Grid item xs={1} ></Grid>

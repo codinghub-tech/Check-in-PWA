@@ -13,46 +13,70 @@ import Grid from '@material-ui/core/Grid';
 export default function OrderStatus() {
 
     return (
-        <div style={{ height: "130px", backgroundColor: "#ffefef", display: "flex", margin: '5px' }}>
+        <Grid style={{ height: "130px", backgroundColor: "#ffefef" }} container spacing={3}>
+            <Grid style={{ margin: "10px", backgroundColor: "white", borderRadius: "6px", height: "70px", marginTop: "30px" }} item xs={7}>
+                <Grid container spacing={1}>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <img src={OrderFirstImage} height="16px" />
+                    </Grid>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <img src={OrderSecondImage} height="16px" />
+                    </Grid>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <img src={OrderThirdImage} height="18px" />
+                    </Grid>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
 
-            <Grid container spacing={3}>
+                            <span
+                                style={{ color: "red", fontWeight: 600 }}
+                            >
 
-                <Grid style={{ margin: "20px", backgroundColor: "white", borderRadius: "6px", height: "70px", marginTop: "50px" }} item xs={7}>
-                    <Grid container spacing={1}>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <img src={OrderFirstImage} height="16px" />
-                        </Grid>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <img src={OrderSecondImage} height="16px" />
-                        </Grid>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <img src={OrderThirdImage} height="18px" />
-                        </Grid>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <p style={{ fontSize: 12, marginLeft: "6px", marginTop: "0", color: "#000000" }}>New</p>
-                        </Grid>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <p style={{ fontSize: 12, marginLeft: "6px", marginTop: "0", color: "#000000" }}>InProgress</p>
-                        </Grid>
-                        <Grid style={{ textAlign: "center" }} item xs={4}>
-                            <p style={{ fontSize: 12, marginLeft: "6px", marginTop: "0", color: "#000000" }}>Delivered</p>
-                        </Grid>
+                            </span>
+                                0&nbsp;New
+                            </p>
+                    </Grid>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <p style={{ fontSize: 9, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
+                            <span
+                                style={{ color: "red", fontWeight: 600 }}
+                            >
+                                2
+                                </span>
+                                &nbsp;In Progress
+                            </p>
+                    </Grid>
+                    <Grid style={{ textAlign: "center" }} item xs={4}>
+                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
+                            <span
+                                style={{ color: "red", fontWeight: 600 }}
+                            >
+                                2
+                                </span>
+                                &nbsp;Delivered
+
+                            </p>
                     </Grid>
                 </Grid>
-                <Grid style={{ marginTop: "40px" }} item xs={3}>
-                    <div>
-                        <div style={{ fontSize: 14, color: "#000000", fontWeight: 800, textAlign: "left", display: "flex" }}><span>Order</span> &nbsp;<span>Status</span> </div>
-                        <div >
-                            <RoundedButton
-                                size={"small"}
-                            >
-                                Status
-                            </RoundedButton>
-                        </div>
-                    </div>
-                </Grid>
             </Grid>
+            <Grid style={{ marginTop: "30px" }} item xs={4}>
+                <div>
+                    <div style={{ fontSize: 13, color: "#000000", fontWeight: 800, textAlign: "center" }}>Order Status</div>
+                    <div >
+                        <RoundedButton
+                            size={"small"}
+                            fullWidth
+                        >
+                            <span
+                                style={{ fontSize: 10 }}
+                            >
+                                View Items
+                                </span>
+                        </RoundedButton>
+                    </div>
+                </div>
+            </Grid>
+        </Grid>
 
-        </div>
     )
 }

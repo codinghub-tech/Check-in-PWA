@@ -12,6 +12,8 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import SendIcon from '@material-ui/icons/Send';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
 
 export default function TextFieldSizes() {
     // const history = useHistory()
@@ -49,10 +51,14 @@ export default function TextFieldSizes() {
     return (
 
 
-        <div>
+        <div style={{ width: "100%" }} >
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
                 <div style={{ marginLeft: '10px' }}><h3>Services</h3></div>
-                <div ><RoundedButton size="small" style={{ backgroundColor: "#0295aa" }}>My Requests</RoundedButton></div>
+                <div style={{ marginTop: '-12px' }} >
+                    <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={"!"} color="error">
+                    </Badge>
+                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa" }}>My Requests</RoundedButton>
+                </div>
             </div>
             <form noValidate autoComplete="off">
 
@@ -68,16 +74,32 @@ export default function TextFieldSizes() {
                         size="small"
                         fullWidth
                     /> */}
-                    <Paper component="form" style={{ borderRadius: '20px', margin: '5px', height: '43px', marginTop: '-10px' }}>
+                    <Paper
+                        elevation={0}
+                        component="form"
+                        style={{
+                            borderRadius: '20px',
+                            margin: '5px',
+                            height: '43px',
+                            marginTop: '-10px',
+                            border: "1px solid #cdcdcd",
+                        }}
+                    >
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            marginTop: "-3px"
+                        }}
+                        >
+                            <InputBase
+                                placeholder="Ask for Something"
+                                style={{ marginLeft: '10px' }}
+                            />
+                            <IconButton aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px' }} >
+                                <SendIcon style={{ color: '#ff5656' }} />
+                            </IconButton>
 
-                        <InputBase
-                            placeholder="Ask for Something"
-                            style={{ marginLeft: '10px' }}
-                        />
-                        <IconButton type="submit" aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px', marginBottom: '5px' }} >
-                            <SendIcon style={{ color: '#ff5656' }} />
-                        </IconButton>
-
+                        </div>
                     </Paper>
                 </div>
 

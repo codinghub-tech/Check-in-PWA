@@ -20,7 +20,7 @@ function BoxInput({ label, ...rest }) {
         borderWidth: 4,
         padding: '4px !important', // override inline-style
       },
-      width: "50px"
+      width: "60px"
     },
   })(TextField);
   return (
