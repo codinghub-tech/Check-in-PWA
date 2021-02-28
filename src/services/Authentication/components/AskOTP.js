@@ -18,20 +18,20 @@ function AskOTP(props) {
 
   return (
     <div>
-      <div style={{ fontWeight: 600, fontSize: 20 }} >OTP sent to 1234567899</div>
+      <div style={{ fontSize: 20 }} >OTP sent to 1234567899</div>
       <br />
       <br />
-      <Grid container >
-        <Grid item xs={3} >
+      <Grid container  >
+        <Grid item xs={2}  >
           <BoxInput />
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <BoxInput />
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <BoxInput />
         </Grid>
-        <Grid item xs={3} >
+        <Grid item xs={2} >
           <BoxInput />
         </Grid>
       </Grid>
@@ -43,6 +43,7 @@ function AskOTP(props) {
           <Button
             fullWidth
             onClick={handleVerify}
+            style={{ textTransform: 'uppercase', color: '#ff5656' }}
           >
             Verify
           </Button>

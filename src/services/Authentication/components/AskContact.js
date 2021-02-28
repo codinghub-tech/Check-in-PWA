@@ -17,7 +17,7 @@ function AskContact(props) {
   }
   return (
     <div>
-      <div style={{ fontWeight: 600, fontSize: 30 }} >Welcome,</div>
+      <div style={{ fontWeight: 400, fontSize: 30 }} >Welcome,</div>
       <div style={{ fontWeight: 200, fontSize: 20 }} >Login to access the account</div>
       <br />
       <br />
@@ -40,6 +40,7 @@ function AskContact(props) {
           <Button
             fullWidth
             onClick={handleProceed}
+            style={{ textTransform: 'uppercase', color: '#ff5656' }}
           >
             Proceed
           </Button>
