@@ -33,7 +33,7 @@ export default function OrderStatus() {
                             >
 
                             </span>
-                                &nbsp;New
+                                0&nbsp;New
                             </p>
                     </Grid>
                     <Grid style={{ textAlign: "center" }} item xs={4}>

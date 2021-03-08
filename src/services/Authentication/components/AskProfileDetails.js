@@ -48,6 +48,7 @@ function AskProfileDetails(props) {
           <Button
             fullWidth
             onClick={handleProceed}
+            style={{ textTransform: 'uppercase', color: '#ff5656' }}
           >
             Proceed
           </Button>

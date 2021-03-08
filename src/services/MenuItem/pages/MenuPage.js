@@ -3,23 +3,28 @@ import AbsoluteItems from '../components/AbsoluteComponents'
 import Offers from '../components/offers'
 import Recommended from '../components/recommended'
 // import AbsoluteItems from '../components/AbsoluteComponents'
+import CategoriesMenu from '../components/CategoriesMenu'
+import Items from '../components/Items'
 
 
-
-function  MenuPage(){
-    return(
+function MenuPage() {
+    return (
         <div>
-           <Offers/>
-           <Recommended/>
-           <div style={{
-                    width: "100%",
-                    height: "45px",
-                    overflow: "hidden",
-                    position: "fixed",
-                    bottom: 0,
-                    backgroundColor: "#0295aa"}}>
-           <AbsoluteItems/>
-           </div>
+            <Offers />
+
+            <div style={{ position: 'absolute', zIndex: 10, width: '100%' }} > <CategoriesMenu /></div>
+            <Items />
+            <Recommended />
+            <div style={{
+                width: "100%",
+                height: "45px",
+                overflow: "hidden",
+                position: "fixed",
+                bottom: 0,
+                backgroundColor: "#0295aa"
+            }}>
+                <AbsoluteItems />
+            </div>
         </div>
     )
 

@@ -27,7 +27,7 @@ function AskOTP(props) {
         <Grid item xs={10} >
           <Grid spacing={3} container >
             <Grid item xs={12} >
-              <div style={{ fontSize: 20, textAlign: "left" }} ><span style={{ fontWeight: 100 }}>OTP sent to </span>1234567899</div>
+              <div style={{ fontSize: 20, textAlign: "left" }} ><span style={{ fontWeight: 100 }}>OTP sent to </span>9997867899</div>
             </Grid>
             <Grid item xs={12} >
               <Grid spacing={3} container >
@@ -49,7 +49,7 @@ function AskOTP(props) {
               <Button
                 fullWidth
                 onClick={handleVerify}
-              >
+                style={{ textTransform: 'uppercase', color: '#ff5656' }}              >
                 Verify
           </Button>
             </Grid>

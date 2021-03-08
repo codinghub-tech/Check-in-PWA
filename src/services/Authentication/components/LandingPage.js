@@ -34,12 +34,13 @@ function LandingPage(props) {
           <Grid item xs={10} >
 
             <img
+              style={{ height: '40px', width: '150px' }}
               src={WhiteLogo}
               width={200}
             />
             <br />
             <br />
-            <div style={{ fontWeight: 600, fontSize: 25 }} >Experience is everything</div>
+            <div style={{ fontWeight: 500, fontSize: 25 }} >Experience is everything</div>
             <br />
             <div className="fw-400 fs-25" style={{ lineHeight: "20px" }}>
               Checkin is the only thing you need while eating
