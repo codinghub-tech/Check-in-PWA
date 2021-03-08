@@ -29,7 +29,8 @@ const initState = {
                 }
             ],
             "is_requested_checkout": false
-        }
+        },
+        error: ""
     }
 }
 
@@ -43,12 +44,33 @@ export const HomeReducer = (state = initState, action) => {
                 ...action.payload
             }
 
-        case ACTION.LOAD_RESTAURENT_DETAILS:
+        case ACTION.LOAD_RESTAURENT_DETAILS_REQ:
             return {
+                ...state,
+                details: {
+                    ...state.details,
+                    error: "",
+                    isLoading: true
+                }
+            }
+
+        case ACTION.LOAD_RESTAURENT_DETAILS_SUCCESS:
+            return {
+                ...state,
                 details: {
                     isLoading: false,
                     data: action.payload,
                     error: ""
+                }
+            }
+
+        case ACTION.LOAD_RESTAURENT_DETAILS_FAILURE:
+            return {
+                ...state,
+                details: {
+                    ...state.details,
+                    error: action.payload,
+                    isLoading: false
                 }
             }
 

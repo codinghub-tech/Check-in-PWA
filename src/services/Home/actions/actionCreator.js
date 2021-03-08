@@ -5,7 +5,15 @@ export const setStateAction = (payload) => ({
   payload
 })
 
-export const loadRestaurentDetailsAction = (payload) => ({
-  type: ACTION.LOAD_RESTAURENT_DETAILS,
+export const loadRestaurentDetailsReq = () => ({
+  type: ACTION.LOAD_RESTAURENT_DETAILS_REQ,
+})
+
+export const loadRestaurentDetailsSuccess = (payload) => ({
+  type: ACTION.LOAD_RESTAURENT_DETAILS_SUCCESS,
   payload
+})
+
+export const loadRestaurentDetailsFailure = () => ({
+  type: ACTION.LOAD_RESTAURENT_DETAILS_FAILURE,
 })
