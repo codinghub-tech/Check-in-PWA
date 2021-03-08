@@ -14,6 +14,7 @@ import AskContact from '../components/AskContact'
 import AskOTP from '../components/AskOTP'
 import AskProfileDetails from '../components/AskProfileDetails'
 import LandingPage from '../components/LandingPage'
+import { _authenticate_via_number } from '../middleware';
 
 function SignupPage(props) {
 
@@ -110,6 +111,12 @@ function SignupPage(props) {
 const mapStateToProps = (state, ownProps) => {
   return {
     state: state.authentication.signup
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _authenticate_via_number: (number) => dispatch(_authenticate_via_number(number))
   }
 }
 

@@ -1,13 +1,10 @@
 import ACTION from "../actions/actionTypes"
 
 const initState = {
-  askingContact: false,
-  askingOTP: false,
-  askingDetails: false,
-  showLandingPage: true,
+  isLoggedIn: true
 }
 
-export const SignupReducer = (state = initState, action) => {
+export const LoginReducer = (state = initState, action) => {
   switch (action.type) {
 
     case ACTION.SET_STATE:

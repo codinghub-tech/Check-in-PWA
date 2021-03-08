@@ -2,8 +2,8 @@ import { combineReducers } from "redux"
 import { HomeReducer } from "./HomeReducer"
 
 
-const homeReducer = combineReducers({
-    data: HomeReducer
-})
+// const homeReducer = combineReducers({
+//     data: HomeReducer
+// })
 
-export default homeReducer
+export default HomeReducer
