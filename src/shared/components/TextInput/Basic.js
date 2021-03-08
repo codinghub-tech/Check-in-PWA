@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core/styles';
 
 
-function Basic({ label, ...rest }) {
+function Basic({ label, onChange, ...rest }) {
   const CustomTextField = withStyles({
     root: {
       '& input:valid + fieldset': {
@@ -24,9 +24,10 @@ function Basic({ label, ...rest }) {
   })(TextField);
   return (
     <div>
-      <CustomTextField
+      <TextField
         variant="outlined"
         label={label}
+        onChange={onChange}
         {...rest}
       />
     </div>

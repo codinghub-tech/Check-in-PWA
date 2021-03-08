@@ -4,16 +4,22 @@ import { connect } from "react-redux"
 
 import TextInput from "../../../shared/components/TextInput/Basic"
 import Button from "../../../shared/components/Button/Basic"
-import { _set_state } from '../middleware'
+import { _set_state, _authenticate_via_number } from '../middleware'
 
 function AskContact(props) {
-  const { setState } = props
+  const { setState, authenticateViaNumber } = props
+  const [phonenumber, setPhonenumber] = React.useState("")
   const handleProceed = () => {
+    authenticateViaNumber(phonenumber)
     setState({
       askingProfileDetails: false,
       askingContact: false,
       askingOTP: true,
     })
+  }
+
+  const handlePhone = (val) => {
+    setPhonenumber(val)
   }
   return (
     <div>
@@ -32,6 +38,8 @@ function AskContact(props) {
               shrink: true,
               style: { color: '#fff' },
             }}
+            value={phonenumber}
+            onChange={(e) => handlePhone(e.target.value)}
           />
         </Grid>
         <Grid item xs={1} ></Grid>
@@ -63,7 +71,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setState: (obj) => dispatch(_set_state(obj))
+    setState: (obj) => dispatch(_set_state(obj)),
+    authenticateViaNumber: (number) => dispatch(_authenticate_via_number(number))
   }
 }
 
