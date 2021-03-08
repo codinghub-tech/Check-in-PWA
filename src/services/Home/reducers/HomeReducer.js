@@ -31,6 +31,16 @@ const initState = {
             "is_requested_checkout": false
         },
         error: ""
+    },
+    orders: {
+        isLoading: false,
+        data: [],
+        error: ""
+    },
+    trendingdishes: {
+        isLoading: false,
+        data: [],
+        error: ""
     }
 }
 
@@ -71,6 +81,64 @@ export const HomeReducer = (state = initState, action) => {
                     ...state.details,
                     error: action.payload,
                     isLoading: false
+                }
+            }
+        case ACTION.LOAD_ORDERS_REQ:
+            return {
+                ...state,
+                orders: {
+                    ...state.orders,
+                    error: "",
+                    isLoading: true
+                }
+            }
+        case ACTION.LOAD_ORDERS_SUCCESS:
+            return {
+                ...state,
+                orders: {
+                    isLoading: false,
+                    data: action.payload,
+                    error: ""
+
+                }
+            }
+        case ACTION.LOAD_ORDERS_FAILURE:
+            return {
+                ...state,
+                orders: {
+                    ...state.orders,
+                    error: action.payload,
+                    isLoading: false
+
+                }
+            }
+        case ACTION.LOAD_TRENDING_DISHES_REQ:
+            return {
+                ...state,
+                trendingdishes: {
+                    ...state.trendingdishes,
+                    error: "",
+                    isLoading: true
+                }
+            }
+        case ACTION.LOAD_TRENDING_DISHES_SUCCESS:
+            return {
+                ...state,
+                trendingdishes: {
+                    isLoading: false,
+                    data: action.payload,
+                    error: ""
+
+                }
+            }
+        case ACTION.LOAD_TRENDING_DISHES_FAILURE:
+            return {
+                ...state,
+                orders: {
+                    ...state.trendingdishes,
+                    error: action.payload,
+                    isLoading: false
+
                 }
             }
 

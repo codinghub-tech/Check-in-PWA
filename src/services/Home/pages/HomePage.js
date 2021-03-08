@@ -6,12 +6,12 @@ import Trending from '../components/Trending'
 import MenuItem from '../components/MenuItem'
 import BillingBottomBar from '../components/BillingBottomBar';
 import Box from '@material-ui/core/Box'
-import { _load_restaurent_details } from '../middleware'
+import { _load_orders, _load_restaurent_details, _load_trending_dishes } from '../middleware'
 import { connect } from "react-redux"
 
 
 function HomePage(props) {
-    const { loadRestaurentDetails, state } = props
+    const { loadRestaurentDetails, state, loadOrders, loadTrendingDishes } = props
     console.log(state);
     const { details } = state
     let windowHeight = window.innerHeight;
@@ -20,7 +20,15 @@ function HomePage(props) {
 
     useEffect(() => {
         loadRestaurentDetails()
+        loadOrders()
+
+
     }, [])
+
+    useEffect(() => {
+        if (details.data.restaurant.pk)
+            loadTrendingDishes()
+    }, [details.data.restaurant.pk])
     return (
         <div>
             <div >
@@ -58,6 +66,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    loadRestaurentDetails: () => dispatch(_load_restaurent_details())
+    loadRestaurentDetails: () => dispatch(_load_restaurent_details()),
+    loadOrders: () => dispatch(_load_orders()),
+    loadTrendingDishes: () => dispatch(_load_trending_dishes()),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
