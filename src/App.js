@@ -6,6 +6,7 @@ import HomePage from './services/Home/pages/HomePage'
 import MenuPage from './services/MenuItem/pages/MenuPage'
 // import RoomServices from './services/RoomServices/components/RoomServices'
 import { connect } from "react-redux"
+import slides from './services/MenuItem/components/Slides'
 
 import { useSelector } from "react-redux"
 import axios from "axios";
@@ -23,6 +24,7 @@ function App(props) {
               <>
                 <Route path="/Home" component={HomePage} />
                 <Route path="/Menu" component={MenuPage} />
+                <Route path="/slides" component={slides} />
                 <Route exact path="/" component={HomePage} />
               </>
               :

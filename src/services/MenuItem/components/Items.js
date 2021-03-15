@@ -36,7 +36,7 @@ function Items() {
                 data={categories.map(res =>
                     <div style={{ height: '90px', width: '80px', margin: '20px' }}>
                         <img style={{ height: '60px', width: '40px' }} src={res.image} />
-                        <div style={{}}>{res.title}</div>
+                        <div style={{ color: '#6d6d6d' }}>{res.title}</div>
                     </div>
                 )} /></div>
 
