@@ -1,5 +1,5 @@
 import React from 'react'
-import RoundedButton from '../../../shared/components/Button/Rounded'
+// import RoundedButton from '../../../shared/components/Button/Rounded'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 export default function AbsoluteItems() {

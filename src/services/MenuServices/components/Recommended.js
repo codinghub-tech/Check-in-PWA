@@ -3,10 +3,10 @@ import Veg from '../../../assets/home/vegicon.png';
 import nonVeg from '../../../assets/home/nonvegicon.jpg';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import RoundedButton from '../../../shared/components/Button/Rounded';
+// import RoundedButton from '../../../shared/components/Button/Rounded';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import MustTry from './MustTry';
+// import MustTry from './MustTry';
 // import WhatshotIcon from '@material-ui/icons/Whatshot';
 // import Recommend from './Recommend';
 import React, { useEffect, useState } from 'react';
@@ -18,53 +18,60 @@ export default function Recommended() {
     let Width = window.innerWidth;
     const [value, setValue] = React.useState(0);
     const history = useHistory()
-    const handleIncrease = () => {
+    const [Items, setItems] = React.useState(
+
+        [
+            {
+                mealtype: 'nonveg',
+                type: 'MUSTTRY',
+                item: 'Haka noodle',
+                price: '375.00',
+                discreption: '',
+                image: '',
+                isCustomised: true,
+                cartValue: 1
+
+            },
+            {
+                mealtype: 'veg',
+                type: 'RECOMMENDED',
+                item: 'Burger with Fries',
+                price: '375.00',
+                discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
+                image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
+                isCustomised: false,
+                cartValue: 2
+            },
+            {
+                mealtype: 'veg',
+                type: 'MUSTTRY',
+                item: 'Pizza',
+                price: '180.98',
+                discreption: '',
+                image: '',
+                isCustomised: true,
+
+                cartValue: 0
+            },
+
+
+        ]);
+    const handleIncrease = (index) => {
         setValue(value + 1)
+        const recItems = Items
+        const cartValue = recItems[index].cartValue
     }
-    const handleDecrease = () => {
+    const handleDecrease = (index) => {
         setValue(value - 1)
     }
     const handleOpenSlides = (isCustomised) => {
         if (isCustomised === true) {
 
-            history.push("/slides")
+            history.push("/sides")
         }
         console.log(Items.isCustomised)
     }
 
-
-    let Items = [
-        {
-            mealtype: 'nonveg',
-            type: 'MUSTTRY',
-            item: 'Haka noodle',
-            price: '375.00',
-            discreption: '',
-            image: '',
-            isCustomised: true
-
-        },
-        {
-            mealtype: 'veg',
-            type: 'RECOMMENDED',
-            item: 'Burger with Fries',
-            price: '375.00',
-            discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
-            image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
-            isCustomised: false
-        },
-        {
-            mealtype: 'veg',
-            type: 'MUSTTRY',
-            item: 'Pizza',
-            price: '180.98',
-            discreption: '',
-            image: '',
-            isCustomised: true
-        },
-
-
-    ];
     // setloading(false)
     console.log(Items)
 
@@ -74,7 +81,7 @@ export default function Recommended() {
         <div style={{ marginBottom: '50px', marginLeft: '5px' }}>
             <h3 style={{ color: '#6d6d6d' }}>&nbsp;Recommended</h3>
 
-            {Items.map(res =>
+            {Items.map((res, index) =>
                 <div style={{ height: '150px', width: '100%' }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ display: 'flex' }} >
@@ -130,9 +137,9 @@ export default function Recommended() {
                                                 cursor: 'pointer', width: '71px', borderRadius: '5px'
                                             }}>
                                                 <div style={{ display: 'flex', color: '#fff' }}>
-                                                    <div ><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} onClick={handleDecrease} /></div>
-                                                    <div style={{ marginTop: '5px', marginLeft: '10px', }} >{value}</div>
-                                                    <div ><AddIcon style={{ width: '16px', marginLeft: '10px' }} onClick={handleIncrease} /></div>
+                                                    <div ><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} onClick={() => handleDecrease(index)} /></div>
+                                                    <div style={{ marginTop: '5px', marginLeft: '10px', }} >{res.cartValue}</div>
+                                                    <div ><AddIcon style={{ width: '16px', marginLeft: '10px' }} onClick={() => handleIncrease(index)} /></div>
                                                 </div>
 
                                             </div>
@@ -174,9 +181,9 @@ export default function Recommended() {
                                                             cursor: 'pointer', width: '71px', borderRadius: '5px'
                                                         }}>
                                                             <div style={{ display: 'flex', color: '#fff' }}>
-                                                                <div onClick={handleDecrease}><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} /></div>
-                                                                <div style={{ marginTop: '5px', marginLeft: '10px', }} >{value}</div>
-                                                                <div onClick={handleIncrease}><AddIcon style={{ width: '16px', marginLeft: '10px' }} /></div>
+                                                                <div onClick={() => handleDecrease(index)}><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} /></div>
+                                                                <div style={{ marginTop: '5px', marginLeft: '10px', }} >{res.cartValue}</div>
+                                                                <div onClick={() => handleIncrease(index)}><AddIcon style={{ width: '16px', marginLeft: '10px' }} /></div>
                                                             </div>
 
                                                         </div>

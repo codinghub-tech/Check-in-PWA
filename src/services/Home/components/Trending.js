@@ -2,13 +2,13 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+// import Tooltip from '@material-ui/core/Tooltip';
+// import AddIcon from '@material-ui/icons/Add';
+// import Fab from '@material-ui/core/Fab';
 import Veg from '../../../assets/home/vegicon.png';
 import nonVeg from '../../../assets/home/nonvegicon.jpg'
-import RoundedButton from '../../../shared/components/Button/Rounded'
-import IconButton from '@material-ui/core/IconButton';
+// import RoundedButton from '../../../shared/components/Button/Rounded'
+// import IconButton from '@material-ui/core/IconButton';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ScrollMenu from "react-horizontal-scrolling-menu";
 
