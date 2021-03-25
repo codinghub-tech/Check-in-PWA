@@ -112,7 +112,7 @@ export default (state = initState, action) => {
                 recommendedRestaurants: {
                     ...state.recommendedRestaurants,
                     isLoading: false,
-                    error: payload,
+                    error: action.payload,
                 }
             }
 

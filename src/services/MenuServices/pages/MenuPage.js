@@ -8,8 +8,7 @@ import BrowseMenu from '../components/BrowseMenu'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useHistory } from 'react-router-dom';
 import { getPromos, loadRecommendedRestaurants } from '../middleware'
-
-
+import { connect } from "react-redux"
 
 function MenuPage(props) {
     const {
