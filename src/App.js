@@ -1,14 +1,15 @@
-import { MenuItem } from "@material-ui/core";
+// import { MenuItem } from "@material-ui/core";
 import React, { useEffect } from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import SignupPage from "./services/Authentication/pages/SignupPage"
 import HomePage from './services/Home/pages/HomePage'
-import MenuPage from './services/MenuItem/pages/MenuPage'
+import MenuPage from './services/MenuServices/pages/MenuPage'
 // import RoomServices from './services/RoomServices/components/RoomServices'
 import { connect } from "react-redux"
+import MenuCustomisation from './services/MenuServices/components/MenuCustomisation'
 
-import { useSelector } from "react-redux"
-import axios from "axios";
+// import { useSelector } from "react-redux"
+// import axios from "axios";
 function App(props) {
   const { state } = props
   useEffect(() => {
@@ -21,8 +22,9 @@ function App(props) {
           {
             state.isLoggedIn ?
               <>
-                <Route path="/Home" component={HomePage} />
-                <Route path="/Menu" component={MenuPage} />
+                <Route path="/home" component={HomePage} />
+                <Route path="/menu" component={MenuPage} />
+                <Route path="/sides" component={MenuCustomisation} />
                 <Route exact path="/" component={HomePage} />
               </>
               :

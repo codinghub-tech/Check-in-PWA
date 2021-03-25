@@ -3,9 +3,9 @@ import Carousel from '../components/Carousel'
 import Services from '../components/Services'
 import OrderStatus from '../components/OrderStatus'
 import Trending from '../components/Trending'
-import MenuItem from '../components/MenuItem'
+import MenuItem from '../components/MenuButton'
 import BillingBottomBar from '../components/BillingBottomBar';
-import Box from '@material-ui/core/Box'
+// import Box from '@material-ui/core/Box'
 import { _load_orders, _load_restaurent_details, _load_trending_dishes } from '../middleware'
 import { connect } from "react-redux"
 
