@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AbsoluteItems from '../components/AbsoluteComponents'
 import Offers from '../components/offers'
 import Recommended from '../components/recommended'
 // import AbsoluteItems from '../components/AbsoluteComponents'
 import CategoriesMenu from '../components/CategoriesMenu'
 import Items from '../components/Items'
+import { _load_menu } from "../middleware/index"
+import { connect } from "react-redux"
 
 
-function MenuPage() {
+function MenuPage(props) {
+    const { loadMenu } = props
+    useEffect(() => {
+        loadMenu()
+    }, [])
     return (
         <div>
             <Offers />
@@ -29,4 +35,12 @@ function MenuPage() {
     )
 
 }
-export default MenuPage
+
+const mapStateToProps = (state) => ({
+    state: state.home
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    loadMenu: () => dispatch(_load_menu())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(MenuPage)
