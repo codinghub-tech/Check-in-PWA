@@ -5,6 +5,11 @@ const initState = {
         isLoading: false,
         data: [],
         error: ""
+    },
+    promos: {
+        isLoading: true,
+        data: [],
+        error: ""
     }
 }
 
@@ -47,6 +52,35 @@ export default (state = initState, action) => {
                     error: action.payload
                 }
             }
+        case ACTION.GET_PROMOS_REQ:
+            return {
+                ...state,
+                promos: {
+                    ...state.promos,
+                    isLoading: true,
+                    error: ""
+                }
+            }
+
+        case ACTION.GET_PROMOS_SUCCESS:
+            return {
+                ...state,
+                promos: {
+                    data: action.payload,
+                    isLoading: false,
+                    error: "",
+                }
+            }
+        case ACTION.GET_PROMOS_FAILURE:
+            return {
+                ...state,
+                promos: {
+                    ...state.promos,
+                    isLoading: false,
+                    error: action.payload,
+                }
+            }
+
 
         default:
             return state
