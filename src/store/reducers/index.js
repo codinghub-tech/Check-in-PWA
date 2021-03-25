@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"
 import authReducer from "../../services/Authentication/reducers"
 import homeReducer from "../../services/Home/reducers/index"
-import menuReducer from "../../services/MenuItem/reducers/index"
+import menuReducer from "../../services/MenuServices/reducers/index"
 
 
 
