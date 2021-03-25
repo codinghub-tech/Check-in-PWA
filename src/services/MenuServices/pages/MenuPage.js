@@ -7,12 +7,15 @@ import Items from '../components/FoodCategories'
 import BrowseMenu from '../components/BrowseMenu'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useHistory } from 'react-router-dom';
-import { loadRecommendedRestaurants } from '../middleware'
+import { getPromos, loadRecommendedRestaurants } from '../middleware'
+
 
 
 function MenuPage(props) {
     const {
-        _load_recommended_restaurants
+        _load_recommended_restaurants,
+        _get_promos,
+
     } = props
     const history = useHistory()
     const handleChange = () => {
@@ -21,6 +24,7 @@ function MenuPage(props) {
 
     useEffect(() => {
         _load_recommended_restaurants()
+        _get_promos()
     }, [])
     return (
         <div>
@@ -59,7 +63,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    _load_recommended_restaurants: () => dispatch(loadRecommendedRestaurants())
+    _load_recommended_restaurants: () => dispatch(loadRecommendedRestaurants()),
+    _get_promos: () => dispatch(getPromos()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuPage)
