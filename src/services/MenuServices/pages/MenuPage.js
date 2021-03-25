@@ -23,7 +23,7 @@ function MenuPage(props) {
 
     useEffect(() => {
         _load_recommended_restaurants()
-        _get_promos()
+        _get_promos("11")
     }, [])
     return (
         <div>
@@ -58,12 +58,12 @@ function MenuPage(props) {
 
 }
 const mapStateToProps = (state) => ({
-    menu: state.menu
+    menu: state.menu,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     _load_recommended_restaurants: () => dispatch(loadRecommendedRestaurants()),
-    _get_promos: () => dispatch(getPromos()),
+    _get_promos: (id) => dispatch(getPromos(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuPage)

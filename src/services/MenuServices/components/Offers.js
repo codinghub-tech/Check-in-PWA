@@ -8,35 +8,29 @@ import Percentage from '../../../assets/menu/Menu.svg';
 import Divider from '@material-ui/core/Divider';
 // import CategoriesMenu from './CategoriesMenu'
 // import Special from '../../../assets/menu/special.svg'
-let menu = [{
-    offer: '40',
-    code: 'OFFER40'
-}, {
-    offer: '50',
-    code: 'OFFER50'
-},
-{
-    offer: '40',
-    code: 'OFFER40'
-}, {
-    offer: '50',
-    code: 'OFFER50'
-}]
+import { connect } from "react-redux"
+import parser from 'html-react-parser'
 
 
-function Offers() {
+
+
+function Offers(props) {
+    const { menu } = props;
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
+    const promos = menu.promos.data;
+    console.log(promos)
     return (
         <div>
             <div> <ScrollMenu
 
-                data={menu.map(res =>
-                    <Card variant="outlined" style={{ height: "60px", width: "140px", margin: "20px", marginRight: "10px", display: 'flex' }}>
+                data={promos.map(res =>
+                    <Card variant="outlined" style={{ height: "60px", width: "160px", margin: "20px", marginRight: "10px", display: 'flex' }}>
 
                         <Typography>
-                            <p style={{ display: 'flex', marginBottom: '0', marginLeft: '6px', fontSize: '14px' }}><img src={Percentage} />&nbsp;Get<div style={{ color: '#ff4f19' }}>&nbsp;{res.offer}%</div>&nbsp;off </p>
-                            <p style={{ marginTop: '0', marginLeft: '6px', fontSize: '10px', marginLeft: '30px' }}>Code:{res.code} </p>
+                            <p style={{ display: 'flex', marginBottom: '0', marginLeft: '6px', fontSize: '14px' }}>
+                                <img src={Percentage} />&nbsp;Get&nbsp;<div style={{ whiteSpace: 'pre-line', fontSize: '11px' }} > {parser(res.name)}</div> </p>
+                            <p style={{ marginTop: '0px', marginLeft: '6px', fontSize: '10px', marginLeft: '30px', }}>Code:{res.code} </p>
                         </Typography>
                     </Card>
                 )} /></div>
@@ -45,6 +39,18 @@ function Offers() {
         </div>)
 }
 
-export default Offers
+
+
+
+
+const mapStateToProps = (state) => ({
+    menu: state.menu,
+})
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Offers)
 
 
