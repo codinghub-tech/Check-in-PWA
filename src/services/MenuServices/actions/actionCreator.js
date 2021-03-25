@@ -17,3 +17,18 @@ export const loadMenuSuccess = (payload) => ({
 export const loadMenuFailure = () => ({
   type: ACTION.LOAD_MENU_FAILURE,
 })
+
+export const loadRecommendedRestaurantsReq = () => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_REQ,
+})
+
+export const loadRecommendedRestaurantsSuccess = (payload) => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_SUCCESS,
+  payload
+})
+
+export const loadRecommendedRestaurantsFailure = (payload) => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_FAILURE,
+  payload
+})
+
