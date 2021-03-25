@@ -1,14 +1,9 @@
-// import React from 'react';
 import Veg from '../../../assets/home/vegicon.png';
 import nonVeg from '../../../assets/home/nonvegicon.jpg';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-// import RoundedButton from '../../../shared/components/Button/Rounded';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-// import MustTry from './MustTry';
-// import WhatshotIcon from '@material-ui/icons/Whatshot';
-// import Recommend from './Recommend';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 
