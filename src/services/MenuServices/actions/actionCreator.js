@@ -32,3 +32,17 @@ export const getpromosFailure = (payload) => ({
   payload
 })
 
+export const loadRecommendedRestaurantsReq = () => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_REQ,
+})
+
+export const loadRecommendedRestaurantsSuccess = (payload) => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_SUCCESS,
+  payload
+})
+
+export const loadRecommendedRestaurantsFailure = (payload) => ({
+  type: ACTION.LOAD_RECOMMENDED_RESTAURANTS_FAILURE,
+  payload
+})
+

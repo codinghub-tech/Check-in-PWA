@@ -10,10 +10,14 @@ const initState = {
         isLoading: true,
         data: [],
         error: ""
+
+    }, recommendedRestaurants: {
+        isLoading: true,
+        data: [],
+        error: ""
     }
+
 }
-
-
 export default (state = initState, action) => {
     switch (action.type) {
 
@@ -81,6 +85,36 @@ export default (state = initState, action) => {
                 }
             }
 
+
+        case ACTION.LOAD_RECOMMENDED_RESTAURANTS_REQ:
+            return {
+                ...state,
+                recommendedRestaurants: {
+                    ...state.recommendedRestaurants,
+                    isLoading: true,
+                    error: ""
+                }
+            }
+
+        case ACTION.LOAD_RECOMMENDED_RESTAURANTS_SUCCESS:
+            return {
+                ...state,
+                recommendedRestaurants: {
+                    ...state.recommendedRestaurants,
+                    isLoading: false,
+                    data: action.payload
+                }
+            }
+
+        case ACTION.LOAD_RECOMMENDED_RESTAURANTS_FAILURE:
+            return {
+                ...state,
+                recommendedRestaurants: {
+                    ...state.recommendedRestaurants,
+                    isLoading: false,
+                    error: payload,
+                }
+            }
 
         default:
             return state
