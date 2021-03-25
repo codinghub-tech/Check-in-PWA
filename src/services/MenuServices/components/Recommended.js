@@ -24,7 +24,7 @@ export default function Recommended() {
                 discreption: '',
                 image: '',
                 isCustomised: true,
-                cartValue: 1
+                cartValue: 0
 
             },
             {
@@ -35,7 +35,7 @@ export default function Recommended() {
                 discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
                 image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
                 isCustomised: false,
-                cartValue: 2
+                cartValue: 0
             },
             {
                 mealtype: 'veg',
@@ -44,20 +44,25 @@ export default function Recommended() {
                 price: '180.98',
                 discreption: '',
                 image: '',
-                isCustomised: true,
-
+                isCustomised: false,
                 cartValue: 0
             },
 
 
         ]);
     const handleIncrease = (index) => {
-        setValue(value + 1)
-        const recItems = Items
+        const recItems = JSON.parse(JSON.stringify(Items))
+        if (recItems[index].isCustomised === true)
+            return handleOpenSlides(true)
         const cartValue = recItems[index].cartValue
+        recItems[index].cartValue = cartValue + 1
+        setItems(recItems)
     }
     const handleDecrease = (index) => {
-        setValue(value - 1)
+        const recItems = JSON.parse(JSON.stringify(Items))
+        const cartValue = recItems[index].cartValue
+        recItems[index].cartValue = cartValue - 1
+        setItems(recItems)
     }
     const handleOpenSlides = (isCustomised) => {
         if (isCustomised === true) {
@@ -124,8 +129,8 @@ export default function Recommended() {
                                 }}
 
                                 >
-                                    {value === 0 ?
-                                        (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={handleIncrease}>ADD</div>)
+                                    {res.cartValue === 0 ?
+                                        (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={() => handleIncrease(index)}>ADD</div>)
                                         : (
                                             <div style={{
                                                 backgroundColor: '#ff5656', height: '21px',
@@ -168,8 +173,8 @@ export default function Recommended() {
                                             }}
 
                                             >
-                                                {value === 0 ?
-                                                    (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={handleIncrease}>ADD</div>)
+                                                {res.cartValue === 0 ?
+                                                    (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={() => handleIncrease(index)}>ADD</div>)
                                                     : (
                                                         <div style={{
                                                             backgroundColor: '#ff5656', height: '21px',
