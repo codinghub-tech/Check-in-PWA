@@ -32,7 +32,12 @@ const initState = {
         },
         error: ""
     },
-    cart: {}
+    cart: {},
+    trendingDishes: {
+        isLoading: true,
+        data: [],
+        error: ""
+    }
 }
 
 
@@ -74,6 +79,37 @@ export const HomeReducer = (state = initState, action) => {
                     isLoading: false
                 }
             }
+
+        case ACTION.LOAD_TRENDING_DISHES_REQ:
+            return {
+                ...state,
+                trendingDishes: {
+                    ...state.trendingDishes,
+                    isLoading: true,
+                    error: ""
+                }
+            }
+
+        case ACTION.LOAD_TRENDING_DISHES_SUCCESS:
+            return {
+                ...state,
+                trendingDishes: {
+                    isLoading: false,
+                    data: action.payload,
+                    error: ""
+                }
+            }
+
+        case ACTION.LOAD_TRENDING_DISHES_FAILURE:
+            return {
+                ...state,
+                trendingDishes: {
+                    isLoading: false,
+                    data: [],
+                    error: ""
+                }
+            }
+
 
         default:
             return state

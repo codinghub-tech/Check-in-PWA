@@ -62,3 +62,7 @@ body {
 .a-tag {
   color: white;
 }
+
+.d-flex {
+  display: flex;
+}

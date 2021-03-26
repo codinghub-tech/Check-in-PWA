@@ -11,8 +11,10 @@ import nonVeg from '../../../assets/home/nonvegicon.jpg'
 // import IconButton from '@material-ui/core/IconButton';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ScrollMenu from "react-horizontal-scrolling-menu";
+import Skeleton from '@material-ui/lab/Skeleton';
+import { connect } from "react-redux"
 
-export default function Trending() {
+function Trending({ home }) {
     let items = [
         {
             itemname: "Chicken Biryani",
@@ -42,40 +44,69 @@ export default function Trending() {
 
     ]
 
+    const trendingDishes = home.trendingDishes
+
     return (
         <div style={{ marginBottom: "50px" }}>
             <div style={{ marginLeft: '10px' }}>
                 <h3>Trending Dishes</h3>
             </div>
-            <div style={{ display: "flex", overflow: "scroll", marginLeft: "0" }} >
-                <ScrollMenu
+            {
+                trendingDishes.isLoading ?
+                    <div className="d-flex" >
+                        {
+                            [1, 2].map(() => {
+                                return (
+                                    <div>
+                                        <Skeleton style={{ marginLeft: "10px" }} variant="rect" width={180} height={110} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    <div style={{ display: "flex", overflow: "scroll", marginLeft: "0" }} >
+                        <ScrollMenu
 
-                    data={items.map(res =>
-                        <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
-                            <CardMedia
-                                style={{ height: "70px" }}
-                                image={res.imageUrl}
-                                title="Item"
-                            />
-                            <Typography variant="subtitle1" color="textSecondary">
-                                <div style={{ display: "flex" }}>   <div >{res.type === "veg" ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                                    <div style={{ fontSize: 14, marginLeft: "6px", marginTop: "2px", marginBottom: "0", color: "#000000" }}> {res.itemname}</div>
-                                    <div></div>
-                                </div>
-                            </Typography>
+                            data={trendingDishes.data.map(dish =>
+                                <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
+                                    <CardMedia
+                                        style={{ height: "70px" }}
+                                        image={dish.image}
+                                        title="Item"
+                                    />
+                                    <Typography variant="subtitle1" color="textSecondary">
+                                        <div style={{ display: "flex" }}>   <div >{dish.item_type === 0 ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
+                                            <div style={{ fontSize: 14, marginLeft: "6px", marginTop: "2px", marginBottom: "0", color: "#000000" }}> {dish.name}</div>
+                                            <div></div>
+                                        </div>
+                                    </Typography>
 
-                            <Typography variant="subtitle1" color="textSecondary">
-                                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <div style={{ fontSize: 14, marginLeft: "20px", marginTop: "0", color: "#000000" }}>&#8377; {res.rate}</div>
-                                    {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
-                                    <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
-                                    {/* </IconButton> */}
-                                </div>
-                            </Typography>
-                        </Card>
-                    )} />
-            </div>
+                                    <Typography variant="subtitle1" color="textSecondary">
+                                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <div style={{ fontSize: 14, marginLeft: "20px", marginTop: "0", color: "#000000" }}>&#8377; {dish.costs?.[0]}</div>
+                                            {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
+                                            <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
+                                            {/* </IconButton> */}
+                                        </div>
+                                    </Typography>
+                                </Card>
+                            )} />
+                    </div>
+            }
+
+
 
         </div>
     )
 }
+
+const mapStateToProps = (state) => ({
+    home: state.home
+})
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trending)
