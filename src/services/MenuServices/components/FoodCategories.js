@@ -15,6 +15,10 @@ let categories = [{
 {
     image: 'https://cdn.zeplin.io/5af42663188049271b3ae959/assets/56BF08BE-83AA-4350-92F2-235CAB742E2B.svg',
     title: 'Special'
+},
+{
+    image: 'https://cdn.zeplin.io/5af42663188049271b3ae959/assets/56BF08BE-83AA-4350-92F2-235CAB742E2B.svg',
+    title: 'Desert'
 }
 
 
@@ -29,7 +33,7 @@ function Items() {
             <div ><ScrollMenu
 
                 data={categories.map(res =>
-                    <div style={{ height: '90px', width: '80px', margin: '20px' }}>
+                    <div style={{ height: '90px', width: '60px', margin: '20px' }}>
                         <img style={{ height: '60px', width: '40px' }} src={res.image} />
                         <div style={{ color: '#6d6d6d' }}>{res.title}</div>
                     </div>

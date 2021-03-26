@@ -118,7 +118,7 @@ export default function Recommended() {
                             </div>
                         </div>
                         <div>
-                            {res.image === "" ? (<div style={{ marginLeft: Width * 0.38 + 'px', }}>
+                            {res.image === "" ? (<div style={{ marginLeft: Width * 0.53 + 'px', }}>
                                 <div style={{
                                     height: '20px',
                                     width: '70px',
@@ -154,13 +154,11 @@ export default function Recommended() {
                                         marginTop: '10px',
                                         marginRight: Width * 0.02 + 'px',
                                         borderRadius: '5px',
-                                        marginLeft: Width * 0.23 + 'px',
-                                        // marginBottom: '-30px',  
-                                        // zIndex: -1,
+                                        marginLeft: Width * 0.34 + 'px',
                                         position: 'absolute'
 
                                     }} src={res.image} />
-                                        <div style={{ marginLeft: Width * 0.3 + 'px', position: 'relative', paddingTop: '78px' }}>
+                                        <div style={{ marginLeft: Width * 0.41 + 'px', position: 'relative', paddingTop: '78px' }}>
                                             <div style={{
                                                 height: '20px',
                                                 width: '70px',
