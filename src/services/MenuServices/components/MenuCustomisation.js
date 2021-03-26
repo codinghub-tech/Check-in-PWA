@@ -49,7 +49,7 @@ function Slides() {
                 {addons.map(res =>
                     <div style={{ display: 'flex', justifyContent: 'space-between', }}>
                         <div style={{ marginTop: '15px' }}>   <div style={{ display: 'flex' }}><div style={{ marginLeft: '10px', marginRight: '10px' }}>
-                            {res.mealtype === "nonveg" ? (<img style={{ height: '12px', }} src={NonVegIcon} />) : (<img style={{ height: '12px', }} src={VegIcon} />)}
+                            {res.mealtype === "nonveg" ? (<img style={{ height: '12px', marginLeft: '5px' }} src={NonVegIcon} />) : (<img style={{ height: '12px', marginLeft: '10px' }} src={VegIcon} />)}
                         </div>
                             <div style={{ color: '#6d6d6d' }}>{res.addontitle}</div></div>
                         </div>
