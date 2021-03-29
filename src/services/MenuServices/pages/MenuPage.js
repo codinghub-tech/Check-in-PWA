@@ -26,14 +26,14 @@ function MenuPage(props) {
         _get_promos("11")
     }, [])
     return (
-        <div>
+        <div style={{ width: '100%' }}>
             <div
                 style={{ width: '100%', borderBottom: "1px solid grey" }}
             >
                 <div style={{ margin: '15px', display: 'flex' }}>
                     <div>  <ArrowBackIosIcon onClick={handleChange} /></div>
                     <div><div style={{ color: "#ff5656" }}>Menu</div>
-                        <div style={{ fontSize: '10px', marginTop: '5px   ' }}>Grey Orange - Lavel Road</div></div></div>
+                        <div style={{ fontSize: '10px', marginTop: '5px' }}>Grey Orange - Lavel Road</div></div></div>
             </div>
             <Offers />
 
@@ -46,9 +46,10 @@ function MenuPage(props) {
                 width: "100%",
                 height: "45px",
                 overflow: "hidden",
-                position: "fixed",
+                position: "sticky",
                 bottom: 0,
-                backgroundColor: "#32c282"
+                backgroundColor: "#32c282",
+
             }}>
                 <AbsoluteItems />
 

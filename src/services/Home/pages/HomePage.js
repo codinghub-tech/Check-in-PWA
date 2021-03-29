@@ -37,7 +37,7 @@ function HomePage(props) {
                     <div
                         style={{ width: '100%', borderBottom: "1px solid grey" }}
                     >
-                        <div style={{ margin: '15px' }}><div style={{ color: "#ff5656" }}>Room No 301</div><div style={{ fontSize: '10px', marginTop: '5px   ' }}>{details.data.restaurant.display_name}</div></div>
+                        <div style={{ margin: '15px' }}><div style={{ color: "#ff5656", fontWeight: 600 }}>Room  301</div><div style={{ fontSize: '10px', fontWeight: 600, marginTop: '5px', color: '#6d6d6d' }}>{details.data.restaurant.display_name}</div></div>
                     </div>
                 </div>
                 < Carousel />

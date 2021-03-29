@@ -14,7 +14,7 @@ export default function OrderStatus() {
 
     return (
         <Grid style={{ height: "130px", backgroundColor: "#ffefef" }} container spacing={3}>
-            <Grid style={{ margin: "10px", backgroundColor: "white", borderRadius: "6px", height: "70px", marginTop: "30px" }} item xs={7}>
+            <Grid style={{ margin: "10px", marginLeft: '30px', backgroundColor: "white", borderRadius: "6px", height: "70px", marginTop: "30px" }} item xs={7}>
                 <Grid container spacing={1}>
                     <Grid style={{ textAlign: "center" }} item xs={4}>
                         <img src={OrderFirstImage} height="16px" />
@@ -26,7 +26,7 @@ export default function OrderStatus() {
                         <img src={OrderThirdImage} height="18px" />
                     </Grid>
                     <Grid style={{ textAlign: "center" }} item xs={4}>
-                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
+                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: '#6d6d6d', fontSize: '9px', fontWeight: 600 }}>
 
                             <span
                                 style={{ color: "red", fontWeight: 600 }}
@@ -37,7 +37,7 @@ export default function OrderStatus() {
                             </p>
                     </Grid>
                     <Grid style={{ textAlign: "center" }} item xs={4}>
-                        <p style={{ fontSize: 9, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
+                        <p style={{ fontSize: 9, marginLeft: "6px", marginTop: "0", color: '#6d6d6d', fontSize: '9px', fontWeight: 600 }}>
                             <span
                                 style={{ color: "red", fontWeight: 600 }}
                             >
@@ -47,7 +47,7 @@ export default function OrderStatus() {
                             </p>
                     </Grid>
                     <Grid style={{ textAlign: "center" }} item xs={4}>
-                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: "#000000" }}>
+                        <p style={{ fontSize: 10, marginLeft: "6px", marginTop: "0", color: '#6d6d6d', fontSize: '8px', fontWeight: 600 }}>
                             <span
                                 style={{ color: "red", fontWeight: 600 }}
                             >
@@ -59,16 +59,16 @@ export default function OrderStatus() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid style={{ marginTop: "30px" }} item xs={4}>
+            <Grid style={{ marginTop: "30px", marginLeft: '-15px' }} item xs={4}>
                 <div>
-                    <div style={{ fontSize: 13, color: "#000000", fontWeight: 800, textAlign: "center" }}>Order Status</div>
+                    <div style={{ fontSize: 13, color: "#6d6d6d", fontWeight: 800, textAlign: "center" }}>Order Status</div>
                     <div >
                         <RoundedButton
                             size={"small"}
                             fullWidth
                         >
                             <span
-                                style={{ fontSize: 10 }}
+                                style={{ fontSize: "14px" }}
                             >
                                 View Items
                                 </span>

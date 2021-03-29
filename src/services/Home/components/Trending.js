@@ -47,8 +47,8 @@ function Trending({ home }) {
     const trendingDishes = home.trendingDishes
 
     return (
-        <div style={{ marginBottom: "50px" }}>
-            <div style={{ marginLeft: '10px' }}>
+        <div >
+            <div style={{ marginLeft: '10px', color: '#6d6d6d', marginTop: '40px', fontSize: '14px', }}>
                 <h3>Trending Dishes</h3>
             </div>
             {
@@ -75,21 +75,22 @@ function Trending({ home }) {
                                         image={dish.image}
                                         title="Item"
                                     />
-                                    <Typography variant="subtitle1" color="textSecondary">
-                                        <div style={{ display: "flex" }}>   <div >{dish.item_type === 0 ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                                            <div style={{ fontSize: 14, marginLeft: "6px", marginTop: "2px", marginBottom: "0", color: "#000000" }}> {dish.name}</div>
-                                            <div></div>
+                                    <div variant="subtitle1" color="textSecondary">
+                                        <div style={{ display: "flex", bottom: 0 }}>
+                                            <div >{dish.item_type === 0 ? (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={Veg} />) : (<img style={{ height: "10px", width: "10px", marginLeft: "5px" }} src={nonVeg} />)}</div>
+                                            <div style={{ fontSize: '10px', marginLeft: "6px", marginTop: "5px", marginBottom: "0", color: "#6d6d6d" }}> {dish.name}</div>
+                                            {/* <div></div> */}
                                         </div>
-                                    </Typography>
+                                        {/* </Typography> */}
 
-                                    <Typography variant="subtitle1" color="textSecondary">
+                                        {/* <Typography variant="subtitle1" color="textSecondary"> */}
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                            <div style={{ fontSize: 14, marginLeft: "20px", marginTop: "0", color: "#000000" }}>&#8377; {dish.costs?.[0]}</div>
+                                            <div style={{ fontSize: '12px', fontWeight: 600, marginLeft: "20px", marginTop: "5px", color: "#6d6d6d" }}>&#8377; {dish.costs?.[0]}</div>
                                             {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
                                             <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
                                             {/* </IconButton> */}
                                         </div>
-                                    </Typography>
+                                    </div>
                                 </Card>
                             )} />
                     </div>

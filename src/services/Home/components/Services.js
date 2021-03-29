@@ -22,29 +22,29 @@ export default function TextFieldSizes() {
     // }
     let items = [
         {
-            services: "RoomService",
-            imageUrl: "https://c8.alamy.com/comp/2EAEMTP/bedroom-interior-with-cleaning-maids-home-cleaning-or-hotel-room-service-cartoon-vector-illustration-interior-with-women-in-black-dresses-and-white-2EAEMTP.jpg"
+            services: "Room Service",
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/C9479B3F-4E34-4794-BA30-4C139B82D6D2.svg"
 
         },
         {
-            services: "Dental Care",
-            imageUrl: "https://previews.123rf.com/images/yupiramos/yupiramos1806/yupiramos180610335/102991061-dental-care-kit-mouthwash-tooth-crown-medication-vector-illustration.jpg"
+            services: "Dental Kit",
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/1726C101-BBE7-47C5-9F1A-A0E99736588B.svg"
         },
         {
             services: "Shaving Kit",
-            imageUrl: "https://previews.123rf.com/images/skypicsstudio/skypicsstudio1904/skypicsstudio190400081/120798802-beard-care-vector-flat-illustration-hair-shaving-machine-or-trimmer-water-spray-bottle-mirror-afters.jpg"
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/A7289ADA-DA04-462B-8BB3-0C94B470877E.svg"
         },
         {
             services: "Fresh towels",
-            imageUrl: "https://png.pngtree.com/png-vector/20190117/ourmid/pngtree-yellow-towel-beautiful-towel-hand-painted-towel-cartoon-towel-png-image_415925.jpg"
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/A2E5D614-E32B-4D8A-B76D-67DAC4DD235F.svg"
         },
         {
             services: "water",
-            imageUrl: "https://w7.pngwing.com/pngs/363/350/png-transparent-water-bottle-glass-bottle-plastic-bottle-blue-water-bottle-glass-blue-cartoon.png"
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/4C1DBA35-E7E2-4986-A7BE-8A3B13A38B11.svg"
         },
         {
             services: "Tissue",
-            imageUrl: "https://image.freepik.com/free-vector/cute-tissue-box-cartoon-icon-illustration-healthy-mascot-character-health-medical-icon-concept-isolated_138676-889.jpg"
+            imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/2AD1B33C-A68B-4625-9767-707F22AACE59.svg"
         }
     ]
     let windowWidth = window.innerWidth;
@@ -53,11 +53,11 @@ export default function TextFieldSizes() {
 
         <div style={{ width: "100%" }} >
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                <div style={{ marginLeft: '10px' }}><h3>Services</h3></div>
+                <div style={{ marginLeft: '10px', color: '#6d6d6d', fontSize: '14px', letterSpacing: '0.8px' }}><h3>Services</h3></div>
                 <div style={{ marginTop: '-12px' }} >
                     <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={"!"} color="error">
                     </Badge>
-                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa" }}>My Requests</RoundedButton>
+                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa", marginBottom: '15px' }}>My Requests</RoundedButton>
                 </div>
             </div>
             <form noValidate autoComplete="off">
@@ -92,7 +92,7 @@ export default function TextFieldSizes() {
                         }}
                         >
                             <InputBase
-                                placeholder="Ask for Something"
+                                placeholder="Ask for anything"
                                 style={{ marginLeft: '10px' }}
                             />
                             <IconButton aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px' }} >
@@ -112,13 +112,13 @@ export default function TextFieldSizes() {
                     data={items.map(res =>
                         <Card style={{ height: "90px", width: "100px", margin: "20px", marginRight: "10px", }}>
                             <CardMedia
-                                style={{ height: "30px", margin: "20px", marginBottom: "0", borderRadius: "10px" }}
+                                style={{ height: "45px", marginTop: '10px', width: '50px', marginLeft: '25px', marginBottom: "0", }}
                                 image={res.imageUrl}
-                                title="Contemplative Reptile"
+                                title="services"
                             // onClick={handleService}
                             />
                             <Typography>
-                                <p style={{ fontSize: 14, marginLeft: "6px", color: "#000000" }}>  {res.services}</p>
+                                <p style={{ fontSize: '12px', fontWeight: 600, textAlign: 'center', marginLeft: "6px", color: '#6d6d6c' }}>  {res.services}</p>
                             </Typography>
                         </Card>
                     )} />
