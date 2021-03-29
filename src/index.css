@@ -64,5 +64,9 @@ body {
 }
 
 .d-flex {
-  display: flex;
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
 }

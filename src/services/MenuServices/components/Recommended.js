@@ -6,15 +6,20 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
+import MenuCustomisation from "./MenuCustomisation"
+
+import { addItem, removeItem } from "../../Cart/actions/actionCreator"
+import { connect } from 'react-redux'
 
 
-export default function Recommended() {
+function Recommended(props) {
     // const [loading, setloading] = useState(true);
+    const { _add_item, _remove_item } = props
+    console.log(props);
     let Width = window.innerWidth;
     const [value, setValue] = React.useState(0);
     const history = useHistory()
     const [Items, setItems] = React.useState(
-
         [
             {
                 mealtype: 'nonveg',
@@ -24,8 +29,24 @@ export default function Recommended() {
                 discreption: '',
                 image: '',
                 isCustomised: true,
-                cartValue: 0
-
+                cartValue: 0,
+                id: "hakanoodle",
+                variants: [
+                    {
+                        name: "Extra Veggie",
+                        price: 123.00,
+                        type: "veg",
+                        variantId: "extraveggie",
+                        id: "hakanoodle"
+                    },
+                    {
+                        name: "Extra Cheese",
+                        price: 110.00,
+                        type: "veg",
+                        variantId: "extracheese",
+                        id: "hakanoodle"
+                    }
+                ]
             },
             {
                 mealtype: 'veg',
@@ -35,7 +56,8 @@ export default function Recommended() {
                 discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
                 image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
                 isCustomised: false,
-                cartValue: 0
+                cartValue: 0,
+                id: "burgerwithfries"
             },
             {
                 mealtype: 'veg',
@@ -45,10 +67,9 @@ export default function Recommended() {
                 discreption: '',
                 image: '',
                 isCustomised: false,
-                cartValue: 0
+                cartValue: 0,
+                id: "pizza"
             },
-
-
         ]);
     const handleIncrease = (index) => {
         const recItems = JSON.parse(JSON.stringify(Items))
@@ -57,12 +78,14 @@ export default function Recommended() {
         const cartValue = recItems[index].cartValue
         recItems[index].cartValue = cartValue + 1
         setItems(recItems)
+        _add_item(recItems[index])
     }
     const handleDecrease = (index) => {
         const recItems = JSON.parse(JSON.stringify(Items))
         const cartValue = recItems[index].cartValue
         recItems[index].cartValue = cartValue - 1
         setItems(recItems)
+        _remove_item(recItems[index].id)
     }
     const handleOpenSlides = (isCustomised) => {
         if (isCustomised === true) {
@@ -81,11 +104,11 @@ export default function Recommended() {
         <div style={{ marginBottom: '50px', marginLeft: '5px' }}>
             <h3 style={{ color: '#6d6d6d' }}>&nbsp;Recommended</h3>
 
-            {Items.map((res, index) =>
+            {Items.map((item, index) =>
                 <div style={{ height: '150px', width: '100%' }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ display: 'flex' }} >
-                            <div>  {res.mealtype === "veg" ?
+                            <div>  {item.mealtype === "veg" ?
                                 (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={Veg} />)
                                 : (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={nonVeg} />)}</div>
                             <div >
@@ -98,27 +121,27 @@ export default function Recommended() {
                                         borderTopLeftRadius: '10px',
                                         borderBottomLeftRadius: '10px',
                                         marginBottom: '10px',
-                                        backgroundColor: res.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
+                                        backgroundColor: item.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
                                     }}>
                                     <div>
 
-                                        <div><div style={{ height: '2px', }}>{res.type === "MUSTTRY" ?
+                                        <div><div style={{ height: '2px', }}>{item.type === "MUSTTRY" ?
                                             (<WhatshotIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />) : (<ThumbUpIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />)}
-                                        </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {res.type}</span> </div>
+                                        </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.type}</span> </div>
 
 
                                     </div>
 
                                 </div>
 
-                                <div style={{ marginLeft: '-16px' }} onClick={() => handleOpenSlides(res.isCustomised)}>
-                                    <div style={{ marginTop: '0', color: '#6d6d6d' }} >{res.item}</div>
-                                    <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{res.price}</div>
+                                <div style={{ marginLeft: '-16px' }} onClick={() => handleOpenSlides(item.isCustomised)}>
+                                    <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.item}</div>
+                                    <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.price}</div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            {res.image === "" ? (<div style={{ marginLeft: Width * 0.53 + 'px', }}>
+                            {item.image === "" ? (<div style={{ marginLeft: Width * 0.53 + 'px', }}>
                                 <div style={{
                                     height: '20px',
                                     width: '70px',
@@ -129,8 +152,18 @@ export default function Recommended() {
                                 }}
 
                                 >
-                                    {res.cartValue === 0 ?
-                                        (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={() => handleIncrease(index)}>ADD</div>)
+                                    {item.cartValue === 0 ?
+                                        (
+                                            item.isCustomised ?
+                                                <MenuCustomisation variants={item.variants} />
+                                                :
+                                                <div
+                                                    style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
+                                                    onClick={() => handleIncrease(index)}
+                                                >
+                                                    ADD
+                                                </div>
+                                        )
                                         : (
                                             <div style={{
                                                 backgroundColor: '#ff5656', height: '21px',
@@ -138,7 +171,7 @@ export default function Recommended() {
                                             }}>
                                                 <div style={{ display: 'flex', color: '#fff' }}>
                                                     <div ><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} onClick={() => handleDecrease(index)} /></div>
-                                                    <div style={{ marginTop: '5px', marginLeft: '10px', }} >{res.cartValue}</div>
+                                                    <div style={{ marginTop: '5px', marginLeft: '10px', }} >{item.cartValue}</div>
                                                     <div ><AddIcon style={{ width: '16px', marginLeft: '10px' }} onClick={() => handleIncrease(index)} /></div>
                                                 </div>
 
@@ -157,7 +190,7 @@ export default function Recommended() {
                                         marginLeft: Width * 0.34 + 'px',
                                         position: 'absolute'
 
-                                    }} src={res.image} />
+                                    }} src={item.image} />
                                         <div style={{ marginLeft: Width * 0.41 + 'px', position: 'relative', paddingTop: '78px' }}>
                                             <div style={{
                                                 height: '20px',
@@ -171,7 +204,7 @@ export default function Recommended() {
                                             }}
 
                                             >
-                                                {res.cartValue === 0 ?
+                                                {item.cartValue === 0 ?
                                                     (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={() => handleIncrease(index)}>ADD</div>)
                                                     : (
                                                         <div style={{
@@ -180,7 +213,7 @@ export default function Recommended() {
                                                         }}>
                                                             <div style={{ display: 'flex', color: '#fff' }}>
                                                                 <div onClick={() => handleDecrease(index)}><RemoveIcon style={{ width: '16px', marginLeft: '5px' }} /></div>
-                                                                <div style={{ marginTop: '5px', marginLeft: '10px', }} >{res.cartValue}</div>
+                                                                <div style={{ marginTop: '5px', marginLeft: '10px', }} >{item.cartValue}</div>
                                                                 <div onClick={() => handleIncrease(index)}><AddIcon style={{ width: '16px', marginLeft: '10px' }} /></div>
                                                             </div>
 
@@ -199,3 +232,14 @@ export default function Recommended() {
         </div >
     )
 }
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    _add_item: (item) => dispatch(addItem(item)),
+    _remove_item: (id) => dispatch(removeItem(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recommended)

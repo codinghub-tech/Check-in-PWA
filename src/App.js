@@ -7,6 +7,7 @@ import MenuPage from './services/MenuServices/pages/MenuPage'
 // import RoomServices from './services/RoomServices/components/RoomServices'
 import { connect } from "react-redux"
 import MenuCustomisation from './services/MenuServices/components/MenuCustomisation'
+import ViewCartPage from "./services/Cart/pages/ViewCartPage"
 
 // import { useSelector } from "react-redux"
 // import axios from "axios";
@@ -15,6 +16,7 @@ function App(props) {
   useEffect(() => {
 
   }, [])
+
   return (
     <div>
       <BrowserRouter>
@@ -22,6 +24,7 @@ function App(props) {
           {
             state.isLoggedIn ?
               <>
+                <Route path="/viewcart" component={ViewCartPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/menu" component={MenuPage} />
                 <Route path="/sides" component={MenuCustomisation} />
@@ -33,9 +36,9 @@ function App(props) {
                 <Route path="/signup" component={SignupPage} />
               </>
           }
-
-
-
+          <div style={{ background: "yellow", width: "100%", padding: "100px" }} >
+            Hello
+          </div>
         </Switch>
       </BrowserRouter>
     </div>

@@ -68,7 +68,7 @@ export const getPromos = (id) => (dispatch) => {
         "filter_choice": "rest.all"
       }
     ]
-    getpromosSuccess(payload)
+    dispatch(getpromosSuccess(payload))
   }, 2000);
 }
 export const loadRecommendedRestaurants = (restaurant_id) => (dispatch) => {

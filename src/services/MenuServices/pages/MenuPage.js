@@ -9,6 +9,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useHistory } from 'react-router-dom';
 import { getPromos, loadRecommendedRestaurants } from '../middleware'
 import { connect } from "react-redux"
+import BottomBar from "../components/AbsoluteComponents"
 
 function MenuPage(props) {
     const {
@@ -31,9 +32,18 @@ function MenuPage(props) {
                 style={{ width: '100%', borderBottom: "1px solid grey" }}
             >
                 <div style={{ margin: '15px', display: 'flex' }}>
-                    <div>  <ArrowBackIosIcon onClick={handleChange} /></div>
-                    <div><div style={{ color: "#ff5656" }}>Menu</div>
-                        <div style={{ fontSize: '10px', marginTop: '5px' }}>Grey Orange - Lavel Road</div></div></div>
+                    <div>
+                        <ArrowBackIosIcon onClick={handleChange} />
+                    </div>
+                    <div>
+                        <div style={{ color: "#ff5656" }}>
+                            Menu
+                        </div>
+                        <div style={{ fontSize: '10px', marginTop: '5px' }}>
+                            Grey Orange - Lavel Road
+                        </div>
+                    </div>
+                </div>
             </div>
             <Offers />
 
@@ -42,18 +52,7 @@ function MenuPage(props) {
             <Recommended />
             {/* <ChatWithUs /> */}
             <BrowseMenu />
-            <div style={{
-                width: "100%",
-                height: "45px",
-                overflow: "hidden",
-                position: "sticky",
-                bottom: 0,
-                backgroundColor: "#32c282",
-
-            }}>
-                <AbsoluteItems />
-
-            </div>
+            <BottomBar />
         </div>
     )
 

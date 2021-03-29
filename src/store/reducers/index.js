@@ -2,13 +2,14 @@ import { combineReducers } from "redux"
 import authReducer from "../../services/Authentication/reducers"
 import homeReducer from "../../services/Home/reducers/index"
 import menuReducer from "../../services/MenuServices/reducers/index"
-
+import cartReducer from "../../services/Cart/reducers/index"
 
 
 const appReducer = combineReducers({
   authentication: authReducer,
   home: homeReducer,
-  menu: menuReducer
+  menu: menuReducer,
+  cart: cartReducer
 })
 
 const rootReducer = (state, action) => {

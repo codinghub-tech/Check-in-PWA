@@ -15,6 +15,11 @@ const initState = {
         isLoading: true,
         data: [],
         error: ""
+    },
+    cart: {
+        isLoading: false,
+        data: [],
+        error: ""
     }
 
 }
