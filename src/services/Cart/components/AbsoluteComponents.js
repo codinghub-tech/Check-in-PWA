@@ -7,29 +7,39 @@ function AbsoluteItems({ cart }) {
 
   const amount = cart.items.data.reduce((init, item) => init + item.price, 0).toFixed(2)
   return (
-    <div>
+    <div style={{
+      width: "100%",
+      height: "45px",
+      overflow: "hidden",
+      position: "sticky",
+      bottom: 0,
+      backgroundColor: "#32c282",
+
+    }}>
       <div style={{
         justifyContent: 'space-between',
         display: 'flex',
         color: '#fff',
-        marginTop: '15px'
+        // bottom: 0
       }}>
         <div style={{
-          marginTop: '-13px',
-          margin: '5px'
+          marginTop: '5px',
+          // marginTop: '5px',
+          marginLeft: '10px'
         }}>
-          <div style={{ fontSize: "12px", marginBottom: "2px" }} >4 Items</div>
+          <div style={{ fontSize: "12px", marginBottom: "5px" }} >4 Items</div>
           <div> &#8377;&nbsp;{amount}</div>
         </div>
-        <div>
-          <span
+        <div
             style={{
-              fontSize: "18px",
+              fontSize: "16px",
+              marginRight: '10px',
+              marginTop: '15px',
 
             }}
           >
             PLACE ORDER
-            </span>
+            
         </div>
       </div>
     </div>

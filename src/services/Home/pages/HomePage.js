@@ -31,34 +31,30 @@ function HomePage(props) {
     }, [details.data.restaurant.pk])
     return (
         <div>
-            <div>
-                <div
-                    style={{ width: '100%', borderBottom: "1px solid grey" }}
-                >
-                    <div style={{ margin: '15px' }}>
-                        <div style={{ color: "#ff5656", fontWeight: 600 }}>
-                            Room  301
-                            </div>
-                        <div style={{ fontSize: '10px', fontWeight: 600, marginTop: '5px', color: '#6d6d6d' }}>
-                            {details.data.restaurant.display_name}
-                        </div>
+            <div >
+
+                <div>
+                    <div
+                        style={{ width: '100%', borderBottom: "1px solid grey" }}
+                    >
+                        <div style={{ margin: '15px' }}><div style={{ color: "#ff5656", fontWeight: 600 }}>Room  301</div><div style={{ fontSize: '10px', fontWeight: 600, marginTop: '5px', color: '#6d6d6d' }}>{details.data.restaurant.display_name}</div></div>
                     </div>
                 </div>
-            </div>
-            < Carousel />
-            <Services />
-            <OrderStatus />
-            <Trending />
+                < Carousel />
+                <Services />
+                <OrderStatus />
+                <Trending />
 
-            <div style={{ position: "absolute", marginLeft: windowWidth * 0.8 + "px", zIndex: 1000, }}>  <MenuItem /></div>
-            <div style={{
-                width: "100%",
-                height: "45px",
-                overflow: "hidden",
-                position: "sticky",
-                bottom: 0,
-                backgroundColor: "#0295aa",
-            }}><BillingBottomBar /></div>
+                <div style={{ position: "absolute", marginLeft: windowWidth * 0.8 + "px", zIndex: 1000, }}>  <MenuItem /></div>
+                <div style={{
+                    width: "100%",
+                    height: "45px",
+                    overflow: "hidden",
+                    position: "sticky",
+                    bottom: 0,
+                    backgroundColor: "#0295aa",
+                }}><BillingBottomBar /></div>
+            </div>
 
 
         </div >
