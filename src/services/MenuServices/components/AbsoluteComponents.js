@@ -2,8 +2,11 @@ import React from 'react'
 // import RoundedButton from '../../../shared/components/Button/Rounded'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { connect } from "react-redux"
+import { useHistory } from 'react-router-dom'
 
 function AbsoluteComponents({ cart }) {
+  const history = useHistory()
+  const amount = cart.items.data.reduce((init, item) => init + item.price, 0).toFixed(2)
   if (cart.items.data.length)
     return (
       <div style={{
@@ -15,19 +18,31 @@ function AbsoluteComponents({ cart }) {
         backgroundColor: "#32c282",
 
       }}>
-        <div style={{ margin: '8px', display: 'flex', color: "#fff" }}>
-          <div> <ShoppingCartOutlinedIcon /></div>
-          <div style={{
-            justifyContent: 'space-between',
-            display: 'flex'
-          }}>
+        <div className="d-flex justify-content-between" style={{ margin: '8px', color: "#fff" }}>
+          <div className="d-flex">
+            <div> <ShoppingCartOutlinedIcon /></div>
             <div style={{
-              marginLeft: '5px',
-              marginTop: '5px',
-              color: '#fff'
-            }}>{cart.items.data.length} Items&nbsp;|&nbsp; &#8377;180.89</div>
-            <div>
+              justifyContent: 'space-between',
+              display: 'flex'
+            }}>
+              <div style={{
+                marginLeft: '5px',
+                marginTop: '5px',
+                color: '#fff'
+              }}>
+                {cart.items.data.length} Items&nbsp;|&nbsp; &#8377;{amount}
+              </div>
             </div>
+          </div>
+          <div>
+            <span
+              style={{
+                fontSize: "18px",
+              }}
+              onClick={() => history.push("/viewcart")}
+            >
+              PROCEED
+            </span>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ export const ViewCartPage = () => {
             >
                 <div style={{ margin: '15px', display: 'flex' }}>
                     <div>
-                        <ArrowBackIosIcon onClick={() => history.hasOwnProperty("back") ? history.back() : history.push("/home")} />
+                        <ArrowBackIosIcon onClick={() => history.hasOwnProperty("back") ? history.back() : history.push("/menu")} />
                     </div>
                     <div>
                         <div style={{ color: "#ff5656", marginTop: '7px' }}>
