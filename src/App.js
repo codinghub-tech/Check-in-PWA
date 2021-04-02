@@ -8,6 +8,7 @@ import MenuPage from './services/MenuServices/pages/MenuPage'
 import { connect } from "react-redux"
 import MenuCustomisation from './services/MenuServices/components/MenuCustomisation'
 import ViewCartPage from "./services/Cart/pages/ViewCartPage"
+import CheckoutPage from './services/Checkout/pages/CheckoutPage'
 
 // import { useSelector } from "react-redux"
 // import axios from "axios";
@@ -24,6 +25,7 @@ function App(props) {
           {
             state.isLoggedIn ?
               <>
+                <Route path="/settlebill" component={CheckoutPage} />
                 <Route path="/viewcart" component={ViewCartPage} />
                 <Route path="/home" component={HomePage} />
                 <Route path="/menu" component={MenuPage} />

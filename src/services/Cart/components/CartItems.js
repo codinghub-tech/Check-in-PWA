@@ -10,6 +10,14 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 export const CartItems = ({ cart }) => {
   const items = cart.items.data
   const width = window.innerWidth
+  const [value, setValue] = React.useState(1);
+
+  const handleIncrease = () => {
+    setValue(value + 1)
+  }
+  const handleDecrease = () => {
+    setValue(value - 1)
+  }
 
   console.log(cart)
   return (
@@ -25,12 +33,12 @@ export const CartItems = ({ cart }) => {
                 {item.name}
               </div>
             </div>
-            <div style={{ marginTop: '20px', marginLeft: width * 0.36 + 'px' }}>
-              <ButtonGroup size="small" aria-label="small outlined button group" style={{ height: '20px', width: '20px' }}>
-                <Button >-</Button>
-                <Button>ADD</Button>
-                <Button >+</Button>
-              </ButtonGroup>
+            <div style={{ marginTop: '20px', marginLeft: width * 0.49 + 'px', width: '30px', color: '#fff' }}>
+              <div style={{ width: '70px', height: '20px', backgroundColor: '#f5365c', borderRadius: '10px', display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ marginLeft: '10px', marginTop: '2px', }} onClick={handleIncrease}>-</div>
+                <div style={{ marginTop: '4px' }}>{value}</div>
+                <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleDecrease} >+</div>
+              </div>
 
             </div>
           </div>
@@ -69,9 +77,13 @@ export const CartItems = ({ cart }) => {
           </div>
         </div>
       )}
+
+        <div style={{ position: 'fixed', bottom: 50, marginLeft: width * 0.2 + 'px', color: '#6d6d6d', fontSize: '12px' }}>
+          " Does not include extra charges or discounts "
+      </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

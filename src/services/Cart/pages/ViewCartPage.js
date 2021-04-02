@@ -11,14 +11,14 @@ export const ViewCartPage = () => {
     return (
         <div >
             <div
-                style={{ width: '100%', borderBottom: "1px solid grey" }}
+                style={{ width: '100%', borderBottom: "1px solid grey", backgroundColor: '#ececec', height: '50px', }}
             >
-                <div style={{ margin: '15px', display: 'flex' }}>
-                    <div>
-                        <ArrowBackIosIcon onClick={() => history.hasOwnProperty("back") ? history.back() : history.push("/menu")} />
+                <div style={{ display: 'flex', }}>
+                    <div style={{ marginTop: '15px', marginLeft: '10px' }}>
+                        <ArrowBackIosIcon style={{ color: '#6d6d6d' }} onClick={() => history.hasOwnProperty("back") ? history.back() : history.push("/menu")} />
                     </div>
                     <div>
-                        <div style={{ color: "#ff5656", marginTop: '7px' }}>
+                        <div style={{ color: "#6d6d6d", marginTop: '20px', fontSize: '20px' }}>
                             Cart
                         </div>
                     </div>

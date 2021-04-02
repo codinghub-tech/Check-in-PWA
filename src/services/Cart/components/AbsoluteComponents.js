@@ -2,10 +2,20 @@ import React from 'react'
 // import RoundedButton from '../../../shared/components/Button/Rounded'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { connect } from "react-redux"
+import { useHistory } from 'react-router-dom';
 
 function AbsoluteItems({ cart }) {
+  
+  
 
   const amount = cart.items.data.reduce((init, item) => init + item.price, 0).toFixed(2)
+
+  const history = useHistory()
+  const handleClick = () => {
+    history.push("/settlebill")
+  }
+
+ 
   return (
     <div style={{
       width: "100%",
@@ -37,6 +47,7 @@ function AbsoluteItems({ cart }) {
               marginTop: '15px',
 
             }}
+            onClick={handleClick}
           >
             PLACE ORDER
             

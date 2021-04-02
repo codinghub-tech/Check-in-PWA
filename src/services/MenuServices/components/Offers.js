@@ -2,7 +2,7 @@ import React from 'react'
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import Percentage from '../../../assets/menu/Menu.svg';
+import Percentage from '../../../assets/menu/percentageicon.svg';
 // import Drinks from '../../../assets/menu/drinks.svg'
 // import Food from '../../../assets/menu/food.svg'
 import Divider from '@material-ui/core/Divider';
