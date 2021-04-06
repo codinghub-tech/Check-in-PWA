@@ -5,6 +5,9 @@ const initState = {
   askingOTP: false,
   askingDetails: false,
   showLandingPage: true,
+  login: {
+    isLoggedIn: false
+  }
 }
 
 export const SignupReducer = (state = initState, action) => {

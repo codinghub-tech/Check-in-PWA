@@ -22,9 +22,70 @@ function Recommended(props) {
     const [Items, setItems] = React.useState(
         [
             {
+                "pk": 85,
+                "name": "Fried Rice",
+                "types": [
+                    "Veg",
+                    "Egg",
+                    "Paneer"
+                ],
+                "costs": [
+                    "99.00",
+                    "119.00",
+                    "119.00"
+                ],
+                "tags": [],
+                "available_meals": [
+                    "brkfst",
+                    "lunch",
+                    "dinner",
+                    "nhtlfe"
+                ],
+                "image": "https://dev.api.check-in.in/static/menu/icons/chinese.png",
+                "description": "Have a tasty Fried Rice (egg or paneer)",
+                "ingredients": [],
+                "is_available": false,
+                "customizations": [],
+                "item_type": 0,
+                "group": 16,
+                "created": "2019-06-24T12:08:56.801840Z",
+                "modified": "2020-11-06T14:27:20.370306Z",
+                "menus": [
+                    2
+                ],
+                mealtype: 'nonveg',
+                cartValue: 0,
+                id: 85,
+                variants: [
+                    {
+                        name: "Veg",
+                        price: 125.00,
+                        type: "veg",
+                        variantId: 1,
+                        id: 85
+                    },
+                    {
+                        name: "Egg",
+                        price: 125.00,
+                        type: "nonveg",
+                        variantId: 2,
+                        id: 85
+                    },
+                    {
+                        name: "Paneer",
+                        price: 100.00,
+                        type: "veg",
+                        variantId: 3,
+                        id: 85
+                    },
+                ],
+                price: 300.00,
+                isCustomised: true,
+            },
+            {
                 mealtype: 'nonveg',
                 type: 'MUSTTRY',
-                item: 'Haka noodle',
+                name: 'Haka noodle',
                 price: 375.00,
                 discreption: '',
                 image: '',
@@ -51,7 +112,7 @@ function Recommended(props) {
             {
                 mealtype: 'veg',
                 type: 'RECOMMENDED',
-                item: 'Burger with Fries',
+                name: 'Burger with Fries',
                 price: 375.00,
                 discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
                 image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
@@ -62,7 +123,7 @@ function Recommended(props) {
             {
                 mealtype: 'veg',
                 type: 'MUSTTRY',
-                item: 'Pizza',
+                name: 'Pizza',
                 price: 180.98,
                 discreption: '',
                 image: '',
@@ -90,7 +151,7 @@ function Recommended(props) {
     const handleOpenSlides = (isCustomised) => {
         if (isCustomised === true) {
 
-            history.push("/sides")
+            // history.push("/sides")
         }
         console.log(Items.isCustomised)
     }
@@ -135,7 +196,7 @@ function Recommended(props) {
                                 </div>
 
                                 <div style={{ marginLeft: '-16px' }} onClick={() => handleOpenSlides(item.isCustomised)}>
-                                    <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.item}</div>
+                                    <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
                                     <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.price}</div>
                                 </div>
                             </div>
@@ -205,7 +266,17 @@ function Recommended(props) {
 
                                             >
                                                 {item.cartValue === 0 ?
-                                                    (<div style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }} onClick={() => handleIncrease(index)}>ADD</div>)
+                                                    (
+                                                        item.isCustomised ?
+                                                            <MenuCustomisation variants={item.variants} />
+                                                            :
+                                                            <div
+                                                                style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
+                                                                onClick={() => handleIncrease(index)}
+                                                            >
+                                                                ADD
+                                                </div>
+                                                    )
                                                     : (
                                                         <div style={{
                                                             backgroundColor: '#ff5656', height: '21px',

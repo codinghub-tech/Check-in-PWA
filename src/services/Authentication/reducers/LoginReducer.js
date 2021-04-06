@@ -1,7 +1,7 @@
 import ACTION from "../actions/actionTypes"
 
 const initState = {
-  isLoggedIn: true
+  isLoggedIn: false
 }
 
 export const LoginReducer = (state = initState, action) => {

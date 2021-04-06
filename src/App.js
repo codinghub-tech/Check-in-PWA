@@ -23,7 +23,7 @@ function App(props) {
       <BrowserRouter>
         <Switch>
           {
-            state.isLoggedIn ?
+            state.signup.login.isLoggedIn ?
               <>
                 <Route path="/settlebill" component={CheckoutPage} />
                 <Route path="/viewcart" component={ViewCartPage} />
@@ -49,7 +49,7 @@ function App(props) {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    state: state.authentication.login
+    state: state.authentication
   }
 }
 
