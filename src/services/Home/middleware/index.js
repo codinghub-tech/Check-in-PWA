@@ -658,6 +658,6 @@ export const _load_trending_dishes = () => (dispatch, getState) => {
       },
     ]
     dispatch(loadTrendingDishesSuccess(payload))
-  }, 3000);
+  }, 1000);
 
 }

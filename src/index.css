@@ -70,3 +70,14 @@ body {
 .justify-content-between {
   justify-content: space-between !important;
 }
+
+.banner-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.banner-card {
+  display: inline-block;
+  margin: 10px;
+}
