@@ -11,7 +11,7 @@ import MenuCustomisation from "./MenuCustomisation"
 import { addItem, removeItem } from "../../Cart/actions/actionCreator"
 import { connect } from 'react-redux'
 
-
+    
 function Recommended(props) {
     // const [loading, setloading] = useState(true);
     const { _add_item, _remove_item } = props
