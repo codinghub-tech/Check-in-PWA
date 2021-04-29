@@ -36,7 +36,7 @@ function Recommended(props) {
                 ],
                 "tags": [],
                 "available_meals": [
-                    "brkfst",
+                    "b",
                     "lunch",
                     "dinner",
                     "nhtlfe"
@@ -84,7 +84,7 @@ function Recommended(props) {
             },
             {
                 mealtype: 'nonveg',
-                type: 'MUSTTRY',
+                type: 'MUST TRY',
                 name: 'Haka noodle',
                 price: 375.00,
                 discreption: '',
@@ -122,7 +122,7 @@ function Recommended(props) {
             },
             {
                 mealtype: 'veg',
-                type: 'MUSTTRY',
+                type: 'MUST TRY',
                 name: 'Pizza',
                 price: 180.98,
                 discreption: '',
@@ -177,16 +177,18 @@ function Recommended(props) {
 
                                     style={{
                                         height: '18px',
-                                        width: '100%',
+                                        width: '103%',
                                         marginLeft: '12px',
                                         borderTopLeftRadius: '10px',
                                         borderBottomLeftRadius: '10px',
+                                        borderTopRightRadius: '4px',
+                                        borderBottomRightRadius: "4px",
                                         marginBottom: '10px',
-                                        backgroundColor: item.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
+                                        backgroundColor: item.type === "MUST TRY" ? "#ff5656" : "#ffc850"
                                     }}>
                                     <div>
 
-                                        <div><div style={{ height: '2px', }}>{item.type === "MUSTTRY" ?
+                                        <div><div style={{ height: '2px', }}>{item.type === "MUST TRY" ?
                                             (<WhatshotIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />) : (<ThumbUpIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />)}
                                         </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.type}</span> </div>
 

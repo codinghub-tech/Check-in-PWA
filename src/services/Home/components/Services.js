@@ -14,14 +14,31 @@ import IconButton from '@material-ui/core/IconButton';
 import SendIcon from '@material-ui/icons/Send';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
+import arrow5 from 'C:/Users/hp/Videos/Check-in-PWA/src/assets/home/arrow5.png'
 
 export default function TextFieldSizes() {
+
+    const history = useHistory()
+    var value = ""
+    const handleService = () => {
+        // return console.log(history)
+        //return value === "" ? value = "" : value = "hello"
+        console.log("tat", document.getElementById('Room1'));
+        console.log("tat", document.getElementById('Room1').innerHTML);
+        document.getElementById('Room1').placeholder = "Room Service";
+        history.push("/Home/Roomservice")
+
+        console.log(history.push("/Home/Roomservice"));
+
+        return console.log(history.push("/Home/Roomservice"));
+    }
     // const history = useHistory()
     // const handleService = () => {
     //     history.push("/Home/Roomservice")
     // }
     let items = [
         {
+
             services: "Room Service",
             imageUrl: "https://cdn.zeplin.io/5af42663188049271b3ae959/assets/C9479B3F-4E34-4794-BA30-4C139B82D6D2.svg"
 
@@ -92,11 +109,13 @@ export default function TextFieldSizes() {
                         }}
                         >
                             <InputBase
+                                id="Room1"         /// ------------------------------------------------
                                 placeholder="Ask for anything"
                                 style={{ marginLeft: '10px' }}
                             />
                             <IconButton aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px' }} >
-                                <SendIcon style={{ color: '#ff5656' }} />
+                                <img src={arrow5} style={{ color: '#ff5656' }} width="20" height="20" viewBox="0 0 30 30"></img>
+
                             </IconButton>
 
                         </div>
@@ -115,7 +134,7 @@ export default function TextFieldSizes() {
                                 style={{ height: "45px", marginTop: '10px', width: '50px', marginLeft: '25px', marginBottom: "0", }}
                                 image={res.imageUrl}
                                 title="services"
-                            // onClick={handleService}
+                                onClick={() => handleService()}
                             />
                             <Typography>
                                 <p style={{ fontSize: '12px', fontWeight: 600, textAlign: 'center', marginLeft: "6px", color: '#6d6d6c' }}>  {res.services}</p>

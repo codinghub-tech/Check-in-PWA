@@ -1,8 +1,10 @@
 import React from 'react'
 // import RoundedButton from '../../../shared/components/Button/Rounded'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import FastForwardIcon from '@material-ui/icons/FastForward';
 import { connect } from "react-redux"
 import { useHistory } from 'react-router-dom'
+import cart5 from 'C:/Users/hp/Videos/Check-in-PWA/src/assets/home/cart5.png'
 
 function AbsoluteComponents({ cart }) {
   const history = useHistory()
@@ -10,7 +12,7 @@ function AbsoluteComponents({ cart }) {
   if (cart.items.data.length)
     return (
       <div style={{
-        width: "100%",
+        width: "110%",
         height: "45px",
         overflow: "hidden",
         position: "sticky",
@@ -20,7 +22,7 @@ function AbsoluteComponents({ cart }) {
       }}>
         <div className="d-flex justify-content-between" style={{ margin: '8px', color: "#fff" }}>
           <div className="d-flex">
-            <div> <ShoppingCartOutlinedIcon /></div>
+            <div><img src={cart5} width="20" height="20" viewBox="0 0 30 30"></img></div>
             <div style={{
               justifyContent: 'space-between',
               display: 'flex'
@@ -35,17 +37,27 @@ function AbsoluteComponents({ cart }) {
             </div>
           </div>
           <div>
-            <span
-              style={{
-                fontSize: "18px",
-              }}
-              onClick={() => history.push("/viewcart")}
-            >
-              PROCEED
-            </span>
+            <div style={{
+              display: "flex",
+            }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  fontSize: "18px",
+                  padding: "6px"
+                }}
+                onClick={() => history.push("/viewcart")}
+              >
+                Continue</span>
+              <span style={{
+                display: "inline-block",
+                padding: "3px"
+              }}><FastForwardIcon />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </div >
     )
   return <div></div>
 }

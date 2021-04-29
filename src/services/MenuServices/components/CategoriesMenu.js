@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
 }));
+const ITEM_HEIGHT = 48;
 
 export default function MenuListComposition() {
     const classes = useStyles();
@@ -63,6 +64,12 @@ export default function MenuListComposition() {
                     aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
                     onClick={handleToggle}
+                    PaperProps={{
+                        style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: '20ch',
+                        },
+                    }}
                 >
                     All
             <div style={{ marginBottom: '.5px' }}>     {open ? (<ArrowDropUpIcon />) : (<ArrowDropDownIcon />)}</div>

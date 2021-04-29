@@ -97,7 +97,7 @@ function SignupPage(props) {
                 }
                 <br />
                 <br />
-                <img width="100%" src={BottomDisplay} />
+                <img width="100%" height="150px" src={BottomDisplay} />
               </div>
             </div>
           </div>

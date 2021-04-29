@@ -45,6 +45,7 @@ function MenuPage(props) {
                     </div>
                 </div>
             </div>
+
             <Offers />
 
             <div style={{ position: 'absolute', zIndex: 10, width: '100%', }} > <CategoriesMenu /></div>
@@ -66,4 +67,4 @@ const mapDispatchToProps = (dispatch) => ({
     _get_promos: (id) => dispatch(getPromos(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuPage)
+export default connect(mapStateToProps, mapDispatchToProps)(MenuPage)    // redux

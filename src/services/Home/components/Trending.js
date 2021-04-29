@@ -69,7 +69,7 @@ function Trending({ home }) {
                         <ScrollMenu
 
                             data={trendingDishes.data.map(dish =>
-                                <Card style={{ height: "120px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
+                                <Card style={{ height: "170px", width: "180px", marginRight: "5px", marginLeft: "3px" }}>
                                     <CardMedia
                                         style={{ height: "70px" }}
                                         image={dish.image}

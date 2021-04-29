@@ -20,7 +20,7 @@ function AskOTP(props) {
     <div>
       <br />
       <br />
-      <Grid spacing={3} container >
+      <Grid spacing={0} container >
         <Grid item xs={1} >
 
         </Grid>

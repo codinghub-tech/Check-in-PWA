@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import BrightnessLowIcon from '@material-ui/icons/BrightnessLow';
 
 export const CartItems = ({ cart }) => {
   const items = cart.items.data
@@ -31,21 +32,27 @@ export const CartItems = ({ cart }) => {
               </div>) : (<div><img src={NonVegIcon} style={{ height: "10px", width: "10px", marginLeft: "5px" }} /></div>)}
               <div style={{ marginTop: '22px', color: '#6d6d6d', fontSize: '14px', marginLeft: '10px', fontWeight: 500 }}>
                 {item.name}
+
+                <div style={{ fontStyle: 'JosefinSans-Regular', marginTop: '5px', color: '#ff5656', width: '80px' }}  >Customize <BrightnessLowIcon style={{ fontSize: '8px' }} />
+                  <span style={{ marginLeft: '100px', fontWeight: 500, color: '#6d6d6d', marginBottom: '50px' }}>
+
+                    &#8377;&nbsp;{item.price}
+                  </span>
+                </div>
+
               </div>
+
             </div>
             <div style={{ marginTop: '20px', marginLeft: width * 0.49 + 'px', width: '30px', color: '#fff' }}>
               <div style={{ width: '70px', height: '20px', backgroundColor: '#f5365c', borderRadius: '10px', display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ marginLeft: '10px', marginTop: '2px', }} onClick={handleIncrease}>-</div>
+                <div style={{ marginLeft: '10px', marginTop: '2px', }} onClick={handleDecrease}>-</div>
                 <div style={{ marginTop: '4px' }}>{value}</div>
-                <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleDecrease} >+</div>
+                <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleIncrease}>+</div>
               </div>
 
             </div>
           </div>
-          <div style={{ marginLeft: '44px', fontWeight: 500, color: '#6d6d6d', marginTop: '5px' }}>
 
-            &#8377;&nbsp;{item.price}
-          </div>
           <div style={{ marginTop: '15px' }}>
             <Paper
               elevation={0}

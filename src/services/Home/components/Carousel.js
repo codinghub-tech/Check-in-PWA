@@ -20,7 +20,7 @@ function Example() {
     ]
 
     return (
-        <div style={{ marginTop: '10px', marginLeft: '10px', }}>
+        <div className="banner-container">
             <Carousel style={{ zindex: 1000 }} animation="slide">
                 {
                     items.map((item, i) => <Item key={i} item={item} />)
@@ -32,10 +32,8 @@ function Example() {
 
 function Item(props) {
     return (
-        <div>
-
-            <img src={props.item.imageURL} style={{ borderRadius: "16px", width: "100%" }} height={window.innerHeight * 0.2} />
-
+        <div className="banner-card">
+            <img alt="banner-item" src={props.item.imageURL} style={{ borderRadius: "16px", width: "280px" }} height={window.innerHeight * 0.2} />
         </div>
 
     )

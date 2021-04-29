@@ -21,14 +21,14 @@ function HomePage(props) {
     useEffect(() => {
         loadRestaurentDetails()
         loadOrders()
-
+        loadTrendingDishes()
 
     }, [])
 
-    useEffect(() => {
-        if (details.data.restaurant.pk)
-            loadTrendingDishes()
-    }, [details.data.restaurant.pk])
+    // useEffect(() => {
+    //     if (details.data.restaurant.pk)
+    //         loadTrendingDishes()
+    // }, [details.data.restaurant.pk])
     return (
         <div>
             <div >
@@ -50,10 +50,12 @@ function HomePage(props) {
                     width: "100%",
                     height: "45px",
                     overflow: "hidden",
-                    position: "sticky",
+                    position: "fixed",
                     bottom: 0,
                     backgroundColor: "#0295aa",
-                }}><BillingBottomBar /></div>
+                }}>
+                    <BillingBottomBar />
+                </div>
             </div>
 
 

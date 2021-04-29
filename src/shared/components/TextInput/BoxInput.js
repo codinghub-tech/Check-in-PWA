@@ -8,6 +8,11 @@ import {
 function BoxInput({ label, ...rest }) {
   const CustomTextField = withStyles({
     root: {
+      '& input': {
+        color: 'white',
+        fontSize: "1.1em",
+        textAlign: "center"
+      },
       '& input:valid + fieldset': {
         borderColor: 'white',
         borderWidth: 2,
@@ -17,16 +22,18 @@ function BoxInput({ label, ...rest }) {
         borderWidth: 2,
       },
       '& input:valid:focus + fieldset': {
-        borderWidth: 4,
+        borderWidth: 2,
         padding: '4px !important', // override inline-style
       },
-      width: "60px"
-    },
+      width: "70px"
+    }
+
   })(TextField);
   return (
     <div>
       <CustomTextField
         variant="outlined"
+        inputProps={{ maxLength: 1 }}
         label={label}
         {...rest}
       />
