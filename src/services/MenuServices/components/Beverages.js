@@ -10,7 +10,6 @@ import MenuCustomisation from "./MenuCustomisation"
 
 import { addItem, removeItem } from "../../Cart/actions/actionCreator"
 import { connect } from 'react-redux'
-
     
 function Recommended(props) {
     // const [loading, setloading] = useState(true);
@@ -139,7 +138,7 @@ function Recommended(props) {
 
     return (
 
-        <div id="Beverages"style={{ marginBottom: '50px', width: Width+"px"}}>
+        <div style={{ marginBottom: '50px', width: Width+"px"}}>
             <h3 style={{ color: '#6d6d6d', marginLeft: "5px" }}>&nbsp;Beverages</h3>
 
             {Items.map((item, index) =>

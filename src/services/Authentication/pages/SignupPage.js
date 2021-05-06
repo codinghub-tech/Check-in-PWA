@@ -50,6 +50,19 @@ function SignupPage(props) {
     },
   }));
   const classes = useStyles();
+  const wheight = window.innerHeight;
+  const width=window.innerWidth;
+  let obj={};
+  if(width>=800){
+    obj={
+      marginTop: "5px"
+    }
+  }
+  else{
+    obj = {
+      marginTop: "18px"
+    }
+  }
   if (state.showLandingPage)
     return <LandingPage />
   return (
@@ -67,15 +80,15 @@ function SignupPage(props) {
 
         <Grid item style={{ backgroundColor: "#ff5656" }} sm={4} xs={12} >
           <div style={{ backgroundColor: "#fff" }} className={classes.paper}>
-            <img width="100%" src={MarketImage} />
+            <img width="100%" src={MarketImage} height={`${wheight*0.09}px}`} />
             <div className="text-center" style={{ marginTop: "22px" }} >
               <img width="100" src={Logo}  />
-              <div style={{ letterSpacing: "0.95sp", fontSize: "28px", fontWeight: "bold", color: "#ff5656",margin: "10px 0" }} >
+              <div style={{ letterSpacing: "0.95sp", fontSize: "28px", fontWeight: "bold", color: "#ff5656",margin: "7px 0" }} >
                 Checkin
               </div>
             </div>
             <div style={{ width: "100%", backgroundColor: "#ff5656" }} >
-              <img width="100%" src={WaveShapeImage} />
+              <img width="100%" height="100px" src={WaveShapeImage} style={{marginTop: "-10px"}} />
               <div className="text-center text-light" >
                 {
                   state.askingContact ?
@@ -100,7 +113,7 @@ function SignupPage(props) {
                 <br />
                 <br />
                 <br />
-                <img width="100%" src={BottomDisplay} height="140px"  />
+                <img width="100%" src={BottomDisplay} height="150px" style={obj} />
               </div>
             </div>
           </div>

@@ -8,14 +8,19 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 export default function BrowseMenu(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const href1=`#${props.id1}`, href2=`#${props.id2}`;
-    console.log(href1,href2)
+    const { ids: data } = props; 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        const container = document.getElementById("container")
+        container.style.filter = "blur(2px)"
+        // container.style.backgroundColor = "grey";
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+        const container = document.getElementById("container")
+        container.style.filter = "none"
+        // container.style.backgroundColor = "rgb(255,255,255)";
     };
     const Space = () => <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
     return (
@@ -30,10 +35,12 @@ export default function BrowseMenu(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
                 style={{overflow: 'auto'}}
-            >
-                <a href={href1} style={{textDecoration: "none", color: "black"}} onClick={handleClose}><MenuItem className="d-flex justify-content-between" href={href1} ><span>Recommended</span>&nbsp; &nbsp; <span>2</span></MenuItem></a>
-                
-                <a href={href2} style={{textDecoration: "none", color: "black"}} onClick={handleClose}><MenuItem className="d-flex justify-content-between" href = {href2}>Beverage <Space /> 13</MenuItem></a>
+            >   
+                {data.map((obj) => {
+                    return(
+                        <a href={obj.href} style={{textDecoration: "none", color: "#343a40", boxShadow:" 0px 0px 5px #fff"}} onClick={handleClose}><MenuItem className="d-flex justify-content-between"><span>{obj.name}</span>&nbsp; &nbsp; <span>{obj.ndish}</span></MenuItem></a>
+                    )
+                })}
                 
             </Menu>
         </div>

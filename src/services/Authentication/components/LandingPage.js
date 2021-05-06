@@ -70,7 +70,7 @@ function LandingPage(props) {
             <div className="text-center" >
               <img
                 src={MobileApp}
-                height={window.innerHeight * 0.55 + "px"}
+                height={window.innerHeight * 0.57 + "px"}
               />
             </div>
 

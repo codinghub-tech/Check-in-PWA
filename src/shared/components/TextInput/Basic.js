@@ -3,6 +3,7 @@ import { TextField } from "@material-ui/core"
 import {
   withStyles,
 } from '@material-ui/core/styles';
+import PropTypes from 'prop-types'
 
 const styles = {
   input: {
@@ -41,6 +42,7 @@ function Basic({ label, classes, onChange, ...rest }) {
   })(TextField);
   return (
     <div>
+      
       <TextField
       style={{ borderColor: 'white'}}
         variant="outlined"
@@ -49,12 +51,22 @@ function Basic({ label, classes, onChange, ...rest }) {
         InputProps = {{
           classes: {input: classes['input'],
                     notchedOutline: classes.notchedOutline},
-          style: {color: 'white'}
+          style: {color: 'white'},
         }}
+        inputProps = {{inputMode: "numeric"}}
+        required={rest.required}
+        autoFocus={rest.autoFocus}
+        autoComplete="off"
         {...rest}
       />
+      
     </div>
   )
+}
+
+Basic.propTypes = {
+  isRequired: PropTypes.bool,
+  isAutoFocus: PropTypes.bool
 }
 
 export default withStyles(styles)(Basic)

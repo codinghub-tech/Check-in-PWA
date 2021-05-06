@@ -38,6 +38,7 @@ function AbsoluteComponents({ cart }) {
           <div>
             <div style={{
               display: "flex",
+              cursor: "pointer"
             }}>
               <span
               style={{

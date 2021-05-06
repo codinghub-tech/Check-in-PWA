@@ -26,7 +26,7 @@ function AskProfileDetails(props) {
       <div style={{ fontWeight: 400, fontSize: 12 }} >One step away from your first 500 Checkin CHIPS <InfoOutlinedIcon style={{ marginBottom: "-6px" }} fontSize="small" /></div>
       <br />
       <br />
-      <Grid spacing={2} container >
+      <Grid spacing={4} container >
         <Grid item xs={1} ></Grid>
         <Grid item xs={5} >
           <TextInput
@@ -35,6 +35,7 @@ function AskProfileDetails(props) {
               shrink: true,
               style: { color: '#fff' },
             }}
+            autoFcous
           />
         </Grid>
         <Grid item xs={5} >

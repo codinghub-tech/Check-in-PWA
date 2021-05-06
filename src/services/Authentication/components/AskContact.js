@@ -27,7 +27,8 @@ function AskContact(props) {
       <div style={{ fontWeight: 200, fontSize: 20 }} >Login to access the account</div>
       <br />
       <br />
-      <Grid container >
+      <form>
+       <Grid container >
         <Grid item xs={1} ></Grid>
         <Grid item xs={10} >
           <TextInput
@@ -38,6 +39,8 @@ function AskContact(props) {
               shrink: true,
               style: { color: '#fff' },
             }}
+            required
+            autoFocus
             value={phonenumber}
             onChange={(e) => handlePhone(e.target.value)}
           />
@@ -58,12 +61,17 @@ function AskContact(props) {
           </Button>
         </Grid>
         <Grid item xs={1} ></Grid>
-      </Grid>
+      </Grid> 
+      {/* <input type="text" required/>
+      <button>Submit</button> */}
+      </form>
+      
+                    
     </div>
   )
 }
-
-
+                          //i used the form element to wrap contact field and proceed button to apply validation but it is not working
+                          //saying form is not connected and also gives another warning in the console
 const mapStateToProps = (state, ownProps) => {
   return {
     state: state.authentication.signup
