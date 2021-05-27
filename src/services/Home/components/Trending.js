@@ -87,7 +87,13 @@ function Trending({ home }) {
                                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                                             <div style={{ fontSize: '12px', fontWeight: 600, marginLeft: "20px", marginTop: "5px", color: "#6d6d6d" }}>&#8377; {dish.costs?.[0]}</div>
                                             {/* <IconButton color="primary" aria-label="add to shopping cart"> */}
-                                            <div style={{ marginBottom: "5px", color: "#0295aa" }}>    <AddCircleOutlineIcon /> </div>
+                                            <div style={{marginRight: "5px", marginTop: "-6px"}}>   <div
+                                                    style={{ padding: "3px 10px", fontSize: '8px', fontWeight: 700, backgroundColor: "#ff5656", color: "white", borderRadius: "5px" }}
+                                                     
+                                                >
+                                                    ADD 
+                                                    
+                                                </div> </div>
                                             {/* </IconButton> */}
                                         </div>
                                     </div>
