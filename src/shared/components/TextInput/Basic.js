@@ -53,10 +53,10 @@ function Basic({ label, classes, onChange, ...rest }) {
                     notchedOutline: classes.notchedOutline},
           style: {color: 'white'},
         }}
-        inputProps = {{inputMode: "numeric"}}
+        inputProps = {{inputMode: rest.inputMode}}
         required={rest.required}
         autoFocus={rest.autoFocus}
-        autoComplete="off"
+        autoComplete="none"
         {...rest}
       />
       

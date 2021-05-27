@@ -38,8 +38,9 @@ function BoxInput({ autoFocus, label,classes, ...rest }) {
         variant="outlined"
         label={label}
         value={rest.value}
-        inputProps={{maxLength: 1, minLength: 1, inputMode: 'numeric', ariaRequired: "true"}}
+        inputProps={{maxLength: 1, minLength: 1, inputMode: 'numeric'}}
         autoFocus={autoFocus}
+        autoComplete="none"
         onInput={(e) => {
           e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
         }}
