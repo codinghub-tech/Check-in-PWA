@@ -20,7 +20,7 @@ function Example() {
     ]
 
     return (
-        <div className="banner-container" >
+ <div className="banner-container" >
             <Carousel style={{ zindex: 1000 }} animation="slide">
                 {
                     items.map((item, i) => <Item key={i} item={item} />)
