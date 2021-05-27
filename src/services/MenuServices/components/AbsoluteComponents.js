@@ -19,7 +19,7 @@ function AbsoluteComponents({ cart }) {
         backgroundColor: "#32c282",
 
       }}>
-        <div className="d-flex justify-content-between" style={{ margin: '8px', color: "#fff" }}>
+        <div className="d-flex justify-content-between" style={{ margin: '8px', color: "#fff", width: "100%" }}>
           <div className="d-flex">
             <div> <ShoppingCartOutlinedIcon /></div>
             <div style={{
