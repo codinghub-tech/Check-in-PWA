@@ -15,27 +15,15 @@ import SendIcon from '@material-ui/icons/Send';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import arrow5 from 'C:/Users/hp/Videos/Check-in-PWA/src/assets/home/arrow5.png'
+import { shadows } from '@material-ui/system';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 export default function TextFieldSizes() {
 
     const history = useHistory()
     var value = ""
-    const handleService = () => {
-        // return console.log(history)
-        //return value === "" ? value = "" : value = "hello"
-        console.log("tat", document.getElementById('Room1'));
-        console.log("tat", document.getElementById('Room1').innerHTML);
-        document.getElementById('Room1').placeholder = "Room Service";
-        history.push("/Home/Roomservice")
 
-        console.log(history.push("/Home/Roomservice"));
-
-        return console.log(history.push("/Home/Roomservice"));
-    }
-    // const history = useHistory()
-    // const handleService = () => {
-    //     history.push("/Home/Roomservice")
-    // }
     let items = [
         {
 
@@ -70,11 +58,11 @@ export default function TextFieldSizes() {
 
         <div style={{ width: "100%" }} >
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
-                <div style={{ marginLeft: '10px', color: '#6d6d6d', fontSize: '14px', letterSpacing: '0.8px' }}><h3>Services</h3></div>
-                <div style={{ marginTop: '-12px' }} >
+                <div style={{ marginLeft: '10px', color: '#6d6d6d', fontSize: '14px', letterSpacing: '0.8px', marginBottom: '20px' }}><h3>Services</h3></div>
+                <div style={{ marginTop: '-16px' }} >
                     <Badge style={{ marginBottom: "-40px", marginLeft: "100px" }} badgeContent={"!"} color="error">
                     </Badge>
-                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa", marginBottom: '15px' }}>My Requests</RoundedButton>
+                    <RoundedButton size="small" style={{ backgroundColor: "#0295aa", marginBottom: '25px' }}>My Requests</RoundedButton>
                 </div>
             </div>
             <form noValidate autoComplete="off">
@@ -109,13 +97,11 @@ export default function TextFieldSizes() {
                         }}
                         >
                             <InputBase
-                                id="Room1"         /// ------------------------------------------------
                                 placeholder="Ask for anything"
                                 style={{ marginLeft: '10px' }}
                             />
                             <IconButton aria-label="search" style={{ marginLeft: windowWidth * 0.32 + 'px' }} >
                                 <img src={arrow5} style={{ color: '#ff5656' }} width="20" height="20" viewBox="0 0 30 30"></img>
-
                             </IconButton>
 
                         </div>
@@ -129,21 +115,20 @@ export default function TextFieldSizes() {
                 <ScrollMenu
 
                     data={items.map(res =>
-                        <Card style={{ height: "90px", width: "100px", margin: "20px", marginRight: "10px", }}>
+                        <Box boxShadow={1} style={{ height: "90px", width: "100px", margin: "20px", marginRight: "10px", borderRadius: '10px' }}>
                             <CardMedia
                                 style={{ height: "45px", marginTop: '10px', width: '50px', marginLeft: '25px', marginBottom: "0", }}
                                 image={res.imageUrl}
                                 title="services"
-                                onClick={() => handleService()}
+                            //  onClick={handleService}
                             />
                             <Typography>
                                 <p style={{ fontSize: '12px', fontWeight: 600, textAlign: 'center', marginLeft: "6px", color: '#6d6d6c' }}>  {res.services}</p>
                             </Typography>
-                        </Card>
+                        </Box>
                     )} />
             </div>
 
         </div>
     );
 }
-
