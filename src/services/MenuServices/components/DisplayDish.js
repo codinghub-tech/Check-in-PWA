@@ -2,24 +2,26 @@ import Veg from '../../../assets/home/vegicon.png';
 import nonVeg from '../../../assets/home/nonvegicon.jpg';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import MenuCustomisation from "./MenuCustomisation"
-
 import { addItem, removeItem } from "../../Cart/actions/actionCreator"
 import { connect } from 'react-redux'
+import ShowDialog from './ShowDialog'
+import  '../../../stylings/displaydishstyle.css'
 
 function Displaydish(props) {
     // const [loading, setloading] = useState(true);
     const { _add_item, _remove_item } = props
-     console.log(props);
+    const [open,setOpen] = useState(false)
     let Width = window.innerWidth;
-    const [value, setValue] = React.useState(0);
     const history = useHistory()
     const [Items, setItems] = React.useState(props.obj.data);
-     console.log(Items)
+    console.log(Items)
     const handleIncrease = (index) => {
         console.log(Items[index].name)
         const recItems = JSON.parse(JSON.stringify(Items))
@@ -51,17 +53,41 @@ function Displaydish(props) {
         }
         console.log(Items.isCustomised)
     }
-    const seeImage = () => (
-        document.getElementById("container").style.filter = "blur(4px)"
-    )
 
+    const handleOpen = () => {
+        setOpen(true)
+    }
+    const handleClose = () => {
+        setOpen(false);
+    }
+    const showFullDescription = (event, category, index) => {
+        const ele = document.getElementById(`${category} ${index} desc`)
+        //  console.log(ele, event.target)
+        ele.classList.toggle("description");
+        event.target.classList.toggle("donotdisplay")
+    }
     // setloading(false)
      //console.log(Items)
+     {/* Since the tags wont be only of 2 types like recommended and must try. There will be many
+         so for that i made an object with property named as tag and its corresponding color */}
+    const itemTypeColors = {
+        "RECOMMENDED": "#ffc850",
+        "MUSTTRY" : "#ff5656",
+        "NEW ARRIVAL": "#52b788",
+        "BEST SELLER": "#c4f5fc"
+    }
 
-
+    {/* Since the tags wont be only of 2 types like recommended and must try. There will be many
+         so for that i made an object with property named as tag and its corresponding icon html element */}
+    const itemTypeIcons = {
+        "RECOMMENDED": <WhatshotIcon className="item-type-icon"/>,
+        "MUSTTRY": <ThumbUpIcon className="item-type-icon"/>,
+        "BEST SELLER": <FavoriteIcon className="item-type-icon" style={{color: "black"}}/>,
+        "NEW ARRIVAL": <FiberNewIcon className = "item-type-icon"/>
+    }
     return (
 
-        <div id = {props.obj.categoryName} style={{ marginBottom: '50px', width: "100%"}}>
+        <div id = {props.obj.categoryName} style={{ marginBottom: '30px', width: "100%"}}>
             <h3 style={{ color: '#6d6d6d', marginLeft: "5px" }}>&nbsp;{props.obj.categoryName}</h3>
 
             {Items.map((item, index) =>
@@ -71,21 +97,22 @@ function Displaydish(props) {
                             <div>  {item.mealtype === "veg" ?
                                 (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={Veg} />)
                                 : (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                            <div style={{ width: "140px"}} >
+                            <div style={{ width: "160px"}} >
                                 <div
 
                                     style={{
                                         height: '18px',
-                                         width: (item.type === "MUSTTRY" ? "80px" : "120px"),
+                                        width: `${5.3*(item.type.length) + 25 + 3*(item.type.length)}px`,
                                         marginLeft: '12px',
                                         borderRadius: '10px 4px 4px 10px',
                                         marginBottom: '10px',
-                                        backgroundColor: item.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
+                                        backgroundColor: itemTypeColors[item.type]
                                     }}>
+                                         {/* here in the width, i calculated an approx width per letter because the tags for the dishes can be anything other than
+                                            must try or recommended and the tag width must adjust according to that so i ended up at an approx relationship */}
                                     <div >
 
-                                        <div><div style={{ height: '2px' }}>{item.type === "MUSTTRY" ?
-                                            (<WhatshotIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />) : (<ThumbUpIcon style={{ height: '14px', color: '#fff', marginTop: '2px', }} />)}
+                                        <div><div style={{ height: '2px' }}>{itemTypeIcons[item.type]}
                                         </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.type}</span> </div>
                                     </div>
 
@@ -94,15 +121,20 @@ function Displaydish(props) {
                                 <div style={{ marginLeft: '-16px' }} onClick={() => handleOpenSlides(item.isCustomised)}>
                                     <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
                                     <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.price}</div>
-                                    <div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}}>
-                                        {item.description}
-                                    </div>
+                                    <div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}} id={`${props.obj.categoryName} ${index} desc`} className="description">
+
+                                    {/* Here the id of description div consist of the category name plus the index of the dish inside that collection of dishes
+                                        so that we easily get the correct div for expanding it on the click on more button for displaying whole description*/ }
+
+                                        {item.description} 
+                                    </div> {item.description.length > 60? 
+                                    (<span style={{color: "#ff5656"}} id="more" onClick={(event) => showFullDescription(event, props.obj.categoryName,index)} >more...</span>) : (<> </>)}
                                 </div>
                             </div>
                             
                         </div>
                         <div style = {{ paddingTop: "95px", marginRight: "20px"}}>
-                            {item.image === "" ? (<div style={{marginLeft: "100px", marginTop: "-55px"}}>
+                            {item.image === "" ? (<div style={{marginLeft: "100px", marginTop: "-95px"}} id="add-button-container-without-image">
                                 <div style={{
                                     height: '20px',
                                     width: '70px',
@@ -118,12 +150,15 @@ function Displaydish(props) {
                                             item.isCustomised ?
                                                 <MenuCustomisation variants={item.variants} />
                                                 :
-                                                <div
+                                                (<div><div
                                                     style={{ paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
-                                                    onClick={() => handleIncrease(index)}
+                                                    onClick={() => handleIncrease(index)} 
                                                 >
-                                                    ADD
+                                                    ADD 
+                                                    
                                                 </div>
+                                                </div>
+                                                )
                                         )
                                         : (
                                             <div style={{
@@ -152,9 +187,11 @@ function Displaydish(props) {
                                         marginLeft: '40px',
                                         position: 'absolute',
                                         right: "5px",
-                                        pointerEvents: "all"
-                                    }} src={item.image}  />
-                                        <div style={{ marginLeft: "100px", position: 'relative', paddingTop: '75px' }} >
+                                        pointerEvents: "all",
+                                        cursor: "pointer"
+                                    }} onClick={handleOpen} src={item.image}  />
+                                    <ShowDialog index={index} image={item.image} item={item} open={open} onClose={handleClose} onPlus={handleIncrease} onMinus={handleDecrease} openSlides={handleOpenSlides} />
+                                        <div style={{ marginLeft: "100px", position: 'relative', height: "22px", marginTop: "75px" }} id="add-button-container-with-image" >
                                             <div style={{
                                                 height: '20px',
                                                 width: '70px',
@@ -176,8 +213,8 @@ function Displaydish(props) {
                                                                 style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                                                                 onClick={() => handleIncrease(index)}
                                                             >
-                                                                ADD
-                                                </div>
+                                                                ADD 
+                                                            </div>
                                                     )
                                                     : (
                                                         <div style={{

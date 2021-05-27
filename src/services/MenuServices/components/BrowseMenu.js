@@ -4,6 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import {fade, makeStyles} from '@material-ui/core/styles'
 
 
 export default function BrowseMenu(props) {
@@ -11,22 +12,21 @@ export default function BrowseMenu(props) {
     const { ids: data } = props; 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        const container = document.getElementById("container")
-        container.style.filter = "blur(2px)"
-        // container.style.backgroundColor = "grey";
+        
+         
+         
     };
 
     const handleClose = () => {
         setAnchorEl(null);
-        const container = document.getElementById("container")
-        container.style.filter = "none"
-        // container.style.backgroundColor = "rgb(255,255,255)";
+        
+         
     };
     const Space = () => <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
     return (
-        <div style={{ bottom: 45, right: 0, position: 'fixed', zIndex: 1000,  }}>
-            <RoundedButton onClick={handleClick} style={{ backgroundColor: '#0295aa', textTransform: 'uppercase', fontSize: '12px' }} >
-                Browse Menu
+        <div style={{ bottom: 30, right: 0, position: 'fixed', zIndex: 1000,  }}>
+            <RoundedButton onClick={handleClick} style={{ backgroundColor: '#0295aa', textTransform: 'uppercase', fontSize: '13px'}} >
+                <span style={{display: "block",marginBottom: "-2px"}}>Browse Menu</span>
             </RoundedButton>
             <Menu
                 id="simple-menu"
@@ -34,7 +34,7 @@ export default function BrowseMenu(props) {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-                style={{overflow: 'auto'}}
+                style={{overflow: 'auto', backgroundColor: "rgb(0, 0, 0, 0.5)"}}
             >   
                 {data.map((obj) => {
                     return(

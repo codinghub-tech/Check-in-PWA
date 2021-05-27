@@ -57,7 +57,7 @@ function MenuPage(props) {
             {dishes.map((item, index) => {
                 return( 
                     <div>                                                       
-                        <Displaydish key={item.categoryName} obj = {item} index = {index}/>
+                        <Displaydish key={item.categoryName} obj = {JSON.parse(JSON.stringify(item))} index = {index}/>
                         <Divider style={{ height: '10px', width: "100%" }} />             
                     </div>
                 )
