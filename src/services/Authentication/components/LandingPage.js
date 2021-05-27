@@ -23,6 +23,7 @@ function LandingPage(props) {
     })
   }
   document.body.style.backgroundColor = "#ff5656"
+
   return (
     <div className="h-100 text-light" >
       <div>
@@ -40,8 +41,8 @@ function LandingPage(props) {
             />
             <br />
             <br />
-            <div style={{ fontWeight: 500, fontSize: 25 }} >Experience is everything</div>
-            <br />
+            <div style={{ fontWeight: 500, fontSize: 20 }} >Experience is everything</div>
+
             <div className="fw-400 fs-25" style={{ lineHeight: "20px" }}>
               Checkin is the only thing you need while eating
               out at Restaurant or staying in Hotel.
@@ -70,7 +71,7 @@ function LandingPage(props) {
             <div className="text-center" >
               <img
                 src={MobileApp}
-                height={window.innerHeight * 0.7 + "px"}
+                height={window.innerHeight * 0.67 + "px"}
               />
             </div>
 

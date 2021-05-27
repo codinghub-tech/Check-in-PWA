@@ -4,8 +4,15 @@ import {
   withStyles,
 } from '@material-ui/core/styles';
 
-
-function Basic({ label, onChange, ...rest }) {
+const styles = {
+  input: {
+    '&::placeholder': {
+      color: 'white',
+      opacity: 1
+    },
+  }
+};
+function Basic({ label, classes, onChange, ...rest }) {
   const CustomTextField = withStyles({
     root: {
       '& input:valid + fieldset': {
@@ -21,17 +28,24 @@ function Basic({ label, onChange, ...rest }) {
         padding: '4px !important', // override inline-style
       }
     },
+
   })(TextField);
   return (
     <div>
       <TextField
+        style={{ borderColor: 'white' }}
         variant="outlined"
         label={label}
         onChange={onChange}
+        InputProps={{
+          classes: { input: classes['input'] },
+          style: { color: "white", fontSize: "1.2em" }
+        }}
+
         {...rest}
       />
     </div>
   )
 }
 
-export default Basic
+export default withStyles(styles)(Basic)
