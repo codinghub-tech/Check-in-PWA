@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { Grid } from "@material-ui/core"
 
 import BoxInput from "../../../shared/components/TextInput/BoxInput"
@@ -20,6 +20,35 @@ function AskProfileDetails(props) {
       }
     })
   }
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [disable,setDisable] = useState(false)
+
+  const handleChange_first = useCallback((event) => {
+      let val=event.target.value;
+      setFirstName(val)
+      // console.log(val)
+      if(firstName && lastName){
+        setDisable(false)
+      }
+  })
+
+  const handleChange_second = useCallback((event) => {
+    const val=event.target.value;
+    setLastName(val)
+    if(firstName.length && lastName.length){
+      setDisable(false)
+    }
+    // console.log(val)
+})
+const focusHandler = () => {
+  const image = document.getElementById("bottom-image");
+  image.style.display = "none";
+}
+const blurHandler = () => {
+  const image = document.getElementById("bottom-image");
+  image.style.display = "block";
+}
 
   return (
     <div>
@@ -35,7 +64,11 @@ function AskProfileDetails(props) {
               shrink: true,
               style: { color: '#fff' },
             }}
-            autoFcous
+            autoFocus
+            value={firstName}
+            onChange={handleChange_first}
+            onFocus = {focusHandler}
+            onBlur = {blurHandler}
           />
         </Grid>
         <Grid item xs={5} >
@@ -45,6 +78,10 @@ function AskProfileDetails(props) {
               shrink: true,
               style: { color: '#fff' },
             }}
+            value={lastName}
+            onChange={handleChange_second}
+            onFocus = {focusHandler}
+            onBlur = {blurHandler}
           />
         </Grid>
         <Grid item xs={1} ></Grid>
@@ -58,6 +95,7 @@ function AskProfileDetails(props) {
             fullWidth
             onClick={handleProceed}
             style={{ textTransform: 'uppercase', color: '#ff5656' }}
+            disabled={disable}
           >
             Proceed
           </Button>

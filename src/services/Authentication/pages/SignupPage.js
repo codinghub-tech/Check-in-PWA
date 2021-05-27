@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import MarketImage from "../../../assets/authentication/market.png"
 import Logo from "../../../assets/authentication/logo.png"
-import WaveShapeImage from "../../../assets/authentication/path_2.jpg"
+import WaveShapeImage from "../../../assets/authentication/path_2_cropped.jpg"
 import BottomDisplay from "../../../assets/authentication/bottomdisplay.jpg"
 
 
@@ -15,6 +15,7 @@ import AskOTP from '../components/AskOTP'
 import AskProfileDetails from '../components/AskProfileDetails'
 import LandingPage from '../components/LandingPage'
 import { _authenticate_via_number } from '../middleware';
+import '../../../stylings/profilepage.css'
 
 function SignupPage(props) {
 
@@ -50,23 +51,11 @@ function SignupPage(props) {
     },
   }));
   const classes = useStyles();
-  const wheight = window.innerHeight;
-  const width=window.innerWidth;
-  let obj={};
-  if(width>=800){
-    obj={
-      marginTop: "5px"
-    }
-  }
-  else{
-    obj = {
-      marginTop: "18px"
-    }
-  }
+
   if (state.showLandingPage)
     return <LandingPage />
   return (
-    <div>
+    <div style={{backgroundColor: "#ff5656"}}>
       <Grid component="main" className={classes.root} container>
         <>
           {
@@ -78,17 +67,19 @@ function SignupPage(props) {
           }
         </>
 
-        <Grid item style={{ backgroundColor: "#ff5656" }} sm={4} xs={12} >
+        <Grid item style={{ backgroundColor: "#ff5656"}} sm={4} xs={12} >
           <div style={{ backgroundColor: "#fff" }} className={classes.paper}>
-            <img width="100%" src={MarketImage} height={`${wheight*0.09}px}`} />
-            <div className="text-center" style={{ marginTop: "22px" }} >
-              <img width="100" src={Logo}  />
-              <div style={{ letterSpacing: "0.95sp", fontSize: "28px", fontWeight: "bold", color: "#ff5656",margin: "7px 0" }} >
+            <img width="100%" src={MarketImage} id="marketimage" />
+            <div className="text-center" style={{ marginTop: "22px"}} >
+              <img width="100" src={Logo} id="logo" />
+              <div style={{ letterSpacing: "0.95sp", fontSize: "28px", fontWeight: "bold", color: "#ff5656",margin: "7px 0" }} id="checkin" >
                 Checkin
               </div>
             </div>
-            <div style={{ width: "100%", backgroundColor: "#ff5656" }} >
-              <img width="100%" height="100px" src={WaveShapeImage} style={{marginTop: "-10px"}} />
+          </div>
+          <div>
+            <img width="100%" src={WaveShapeImage} style={{marginTop: "-12.5px"}} />
+            <div style={{ width: "100%", backgroundColor: "#ff5656"}} >
               <div className="text-center text-light" >
                 {
                   state.askingContact ?
@@ -113,10 +104,12 @@ function SignupPage(props) {
                 <br />
                 <br />
                 <br />
-                <img width="100%" src={BottomDisplay} height="150px" style={obj} />
               </div>
+              
             </div>
+            
           </div>
+          <img width="100%" src={BottomDisplay} id="bottom-image" style={{position: "fixed", bottom: "0"}} />
         </Grid>
       </Grid>
 
