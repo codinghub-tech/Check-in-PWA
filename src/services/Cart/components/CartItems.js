@@ -17,40 +17,61 @@ export const CartItems = ({ cart }) => {
     setValue(value + 1)
   }
   const handleDecrease = () => {
-    setValue(value - 1)
+    if (value > 0) { setValue(value - 1) };
+  }
+  const handleCustomize = () => {
+    console.log("this is customizeable")
   }
 
+  // console.log(cart)
   console.log(cart)
+  // console.log(items[2].variantId)
+  // (cart.items.data) ? console.log(cart.items.data) : console.log(cart)
   return (
     <div>
       <div>{items.map((item, index) =>
         <div>
           <div style={{ display: 'flex', }}>
             <div style={{ display: 'flex' }}>
-              {item.type === "veg" ? (<div style={{ marginTop: '20px', marginLeft: '20px' }}>
-                <img src={VegIcon} style={{ height: "10px", width: "10px", marginLeft: "5px" }} />
-              </div>) : (<div><img src={NonVegIcon} style={{ height: "10px", width: "10px", marginLeft: "5px" }} /></div>)}
+              {item.type === "veg" ? (<div style={{ marginTop: '20px', marginLeft: '15px' }}>
+                <img src={NonVegIcon} style={{ height: "10px", width: "10px", marginLeft: "5px", marginTop: "5px" }} />
+              </div>) : (<div style={{ marginTop: '20px', marginLeft: '20px' }} ><img src={VegIcon} style={{ height: "11px", width: "11px", marginTop: "5px" }} /></div>)}
+
               <div style={{ marginTop: '22px', color: '#6d6d6d', fontSize: '14px', marginLeft: '10px', fontWeight: 500 }}>
                 {item.name}
 
-                <div style={{ fontStyle: 'JosefinSans-Regular', marginTop: '5px', color: '#ff5656', width: '80px' }}  >Customize <BrightnessLowIcon style={{ fontSize: '8px' }} />
-                  <span style={{ marginLeft: '100px', fontWeight: 500, color: '#6d6d6d', marginBottom: '50px' }}>
 
-                    &#8377;&nbsp;{item.price}
-                  </span>
+                <div> {item.variantId ? (<div style={{ fontStyle: 'JosefinSans-Regular', marginTop: '5px', color: '#ff5656', width: '200px', fontSize: '11px' }} onClick={handleCustomize()} >  Customize <BrightnessLowIcon style={{ fontSize: '8px' }} /> <span style={{ marginRight: '80px', fontWeight: 500, color: '#6d6d6d', marginBottom: '50px', fontSize: '15px', marginLeft: '10px' }} > &#8377;&nbsp;{item.price}</span>  </div>) :
+                  <span style={{ marginRight: '100px', fontWeight: 500, color: '#6d6d6d', fontSize: '15px' }} > &#8377;&nbsp;{item.price}</span>}
                 </div>
 
               </div>
 
+              {/* marginLeft: width * 0.15 + 'px' */}
             </div>
-            <div style={{ marginTop: '20px', marginLeft: width * 0.49 + 'px', width: '30px', color: '#fff' }}>
-              <div style={{ width: '70px', height: '20px', backgroundColor: '#f5365c', borderRadius: '10px', display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ marginLeft: '10px', marginTop: '2px', }} onClick={handleDecrease}>-</div>
-                <div style={{ marginTop: '4px' }}>{value}</div>
-                <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleIncrease}>+</div>
-              </div>
+
+            <div>{item.type === "veg" ?
+              <div style={{ marginTop: '20px', marginLeft: '58px', color: '#fff' }}>
+                <div style={{ width: '60px', height: '20px', backgroundColor: '#f5365c', borderRadius: '5px', display: 'flex', justifyContent: 'space-between', marginLeft: '5px' }}>
+                  <div style={{ marginLeft: '11px', marginTop: '2px', }} onClick={handleDecrease}>-</div>
+                  <div style={{ marginTop: '4px' }}>{value}</div>
+                  <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleIncrease}>+</div>
+
+                </div>
+
+              </div> :
+              <div style={{ marginTop: '20px', marginLeft: '108px', color: '#fff' }}>
+                <div style={{ width: '60px', height: '20px', backgroundColor: '#f5365c', borderRadius: '5px', display: 'flex', justifyContent: 'space-between' }}>
+                  <div style={{ marginLeft: '10px', marginTop: '2px', }} onClick={handleDecrease}>-</div>
+                  <div style={{ marginTop: '4px' }}>{value}</div>
+                  <div style={{ marginRight: '10px', marginTop: '2px' }} onChange={handleIncrease}>+</div>
+
+                </div>
+
+              </div>}
 
             </div>
+
           </div>
 
           <div style={{ marginTop: '15px' }}>
@@ -58,13 +79,14 @@ export const CartItems = ({ cart }) => {
               elevation={0}
               component="form"
               style={{
-                borderRadius: '20px',
+                borderRadius: '10px',
                 margin: '5px',
                 height: '30px',
                 marginTop: '-10px',
                 border: "1px solid #cdcdcd",
-                marginLeft: '42px',
-                marginRight: '42px'
+                marginLeft: '40px',
+                marginRight: '32px'
+
               }}
             >
               <div style={{
@@ -85,7 +107,7 @@ export const CartItems = ({ cart }) => {
         </div>
       )}
 
-        <div style={{ position: 'fixed', bottom: 50, marginLeft: width * 0.2 + 'px', color: '#6d6d6d', fontSize: '12px' }}>
+        <div style={{ position: 'fixed', bottom: 50, marginLeft: '65px', color: '#6d6d6d', fontSize: '12px' }}>
           " Does not include extra charges or discounts "
       </div>
       </div>
