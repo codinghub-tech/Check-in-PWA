@@ -9,6 +9,8 @@ import { connect } from "react-redux"
 import MenuCustomisation from './services/MenuServices/components/MenuCustomisation'
 import ViewCartPage from "./services/Cart/pages/ViewCartPage"
 import CheckoutPage from './services/Checkout/pages/CheckoutPage'
+import ApplyPrommos from './services/Checkout/components/ApplyPrommos'
+
 
 // import { useSelector } from "react-redux"
 // import axios from "axios";
@@ -30,6 +32,7 @@ function App(props) {
                 <Route path="/home" component={HomePage} />
                 <Route path="/menu" component={MenuPage} />
                 <Route path="/sides" component={MenuCustomisation} />
+                <Route path="/Apply" component={ApplyPrommos} />
                 <Route exact path="/" component={HomePage} />
               </>
               :
