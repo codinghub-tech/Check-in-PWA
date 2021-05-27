@@ -2,150 +2,48 @@ import Veg from '../../../assets/home/vegicon.png';
 import nonVeg from '../../../assets/home/nonvegicon.jpg';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import MenuCustomisation from "./MenuCustomisation"
-
 import { addItem, removeItem } from "../../Cart/actions/actionCreator"
 import { connect } from 'react-redux'
+import ShowDialog from './ShowDialog'
+import  '../../../stylings/displaydishstyle.css'
 
-function Recommended(props) {
+function Displaydish(props) {
     // const [loading, setloading] = useState(true);
     const { _add_item, _remove_item } = props
-    console.log(props);
+    const [open,setOpen] = useState(false)
     let Width = window.innerWidth;
-    const [value, setValue] = React.useState(0);
     const history = useHistory()
-    const [Items, setItems] = React.useState(
-        [
-            {
-                "pk": 85,
-                "name": "Fried Rice",
-                "type": "RECOMMENDED",
-                "types": [
-                    "Veg",
-                    "Egg",
-                    "Paneer"
-                ],
-                "costs": [
-                    "99.00",
-                    "119.00",
-                    "119.00"
-                ],
-                "tags": [],
-                "available_meals": [
-                    "brkfst",
-                    "lunch",
-                    "dinner",
-                    "nhtlfe"
-                ],
-                "image": "",
-                "description": "Have a tasty Fried Rice (egg or paneer)",
-                "ingredients": [],
-                "is_available": false,
-                "customizations": [],
-                "item_type": 0,
-                "group": 16,
-                "created": "2019-06-24T12:08:56.801840Z",
-                "modified": "2020-11-06T14:27:20.370306Z",
-                "menus": [
-                    2
-                ],
-                mealtype: 'nonveg',
-                cartValue: 0,
-                id: 85,
-                variants: [
-                    {
-                        name: "Veg",
-                        price: 125.00,
-                        type: "veg",
-                        variantId: 1,
-                        id: 85
-                    },
-                    {
-                        name: "Egg",
-                        price: 125.00,
-                        type: "nonveg",
-                        variantId: 2,
-                        id: 85
-                    },
-                    {
-                        name: "Paneer",
-                        price: 100.00,
-                        type: "veg",
-                        variantId: 3,
-                        id: 85
-                    },
-                ],
-                price: 300.00,
-                isCustomised: true,
-            },
-            {
-                mealtype: 'nonveg',
-                type: 'MUSTTRY',
-                name: 'Haka noodle',
-                price: 375.00,
-                discreption: '',
-                image: '',
-                isCustomised: true,
-                cartValue: 0,
-                id: "hakanoodle",
-                variants: [
-                    {
-                        name: "Extra Veggie",
-                        price: 123.00,
-                        type: "veg",
-                        variantId: "extraveggie",
-                        id: "hakanoodle"
-                    },
-                    {
-                        name: "Extra Cheese",
-                        price: 110.00,
-                        type: "veg",
-                        variantId: "extracheese",
-                        id: "hakanoodle"
-                    }
-                ]
-            },
-            {
-                mealtype: 'veg',
-                type: 'RECOMMENDED',
-                name: 'Burger with Fries',
-                price: 375.00,
-                discreption: 'Lettuce, totmato, caramelized onion, veggie, cheddar cheese.',
-                image: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg',
-                isCustomised: false,
-                cartValue: 0,
-                id: "burgerwithfries"
-            },
-            {
-                mealtype: 'veg',
-                type: 'MUSTTRY',
-                name: 'Pizza',
-                price: 180.98,
-                discreption: '',
-                image: '',
-                isCustomised: false,
-                cartValue: 0,
-                id: "pizza"
-            },
-        ]);
+    const [Items, setItems] = React.useState(props.obj.data);
+    console.log(Items)
     const handleIncrease = (index) => {
+        console.log(Items[index].name)
         const recItems = JSON.parse(JSON.stringify(Items))
         if (recItems[index].isCustomised === true)
             return handleOpenSlides(true)
         const cartValue = recItems[index].cartValue
+        console.log(recItems[index].cartValue)
         recItems[index].cartValue = cartValue + 1
         setItems(recItems)
+        
         _add_item(recItems[index])
+        console.log(Items[index].cartValue) 
     }
     const handleDecrease = (index) => {
+        
         const recItems = JSON.parse(JSON.stringify(Items))
         const cartValue = recItems[index].cartValue
+        console.log(cartValue)
         recItems[index].cartValue = cartValue - 1
+        
         setItems(recItems)
+        console.log(Items[index].cartValue)
         _remove_item(recItems[index].id)
     }
     const handleOpenSlides = (isCustomised) => {
@@ -156,40 +54,66 @@ function Recommended(props) {
         console.log(Items.isCustomised)
     }
 
+    const handleOpen = () => {
+        setOpen(true)
+    }
+    const handleClose = () => {
+        setOpen(false);
+    }
+    const showFullDescription = (event, category, index) => {
+        const ele = document.getElementById(`${category} ${index} desc`)
+        //  console.log(ele, event.target)
+        ele.classList.toggle("description");
+        event.target.classList.toggle("donotdisplay")
+    }
     // setloading(false)
-    console.log(Items)
+     //console.log(Items)
+     {/* Since the tags wont be only of 2 types like recommended and must try. There will be many
+         so for that i made an object with property named as tag and its corresponding color */}
+    const itemTypeColors = {
+        "RECOMMENDED": "#ffc850",
+        "MUSTTRY" : "#ff5656",
+        "NEW ARRIVAL": "#52b788",
+        "BEST SELLER": "#c4f5fc"
+    }
 
-
+    {/* Since the tags wont be only of 2 types like recommended and must try. There will be many
+         so for that i made an object with property named as tag and its corresponding icon html element */}
+    const itemTypeIcons = {
+        "RECOMMENDED": <WhatshotIcon className="item-type-icon"/>,
+        "MUSTTRY": <ThumbUpIcon className="item-type-icon"/>,
+        "BEST SELLER": <FavoriteIcon className="item-type-icon" style={{color: "black"}}/>,
+        "NEW ARRIVAL": <FiberNewIcon className = "item-type-icon"/>
+    }
     return (
 
-        <div id = "Recommended"style={{ marginBottom: '50px', width: Width+"px"}}>
-            <h3 style={{ color: '#6d6d6d', marginLeft: "5px" }}>&nbsp;Recommended</h3>
+        <div id = {props.obj.categoryName} style={{ marginBottom: '30px', width: "100%"}}>
+            <h3 style={{ color: '#6d6d6d', marginLeft: "5px" }}>&nbsp;{props.obj.categoryName}</h3>
 
             {Items.map((item, index) =>
-                <div style={{ height: '150px', width: Width + 'px', marginLeft: "10px"}}>
-                    <div style={{ display: 'flex' }}>
-                        <div style={{ display: 'flex' }} >
+                <div style={{ height: '150px', width: "100%", marginLeft: "2px"}}>
+                    <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                        <div style={{ display: 'flex', marginLeft: "5px" }} >
                             <div>  {item.mealtype === "veg" ?
                                 (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={Veg} />)
                                 : (<img style={{ height: "15px", width: "15px", marginLeft: "5px" }} src={nonVeg} />)}</div>
-                            <div >
+                            <div style={{ width: "160px"}} >
                                 <div
 
                                     style={{
                                         height: '18px',
-                                        width: '100%',
+                                        width: `${5.3*(item.type.length) + 25 + 3*(item.type.length)}px`,
                                         marginLeft: '12px',
                                         borderRadius: '10px 4px 4px 10px',
                                         marginBottom: '10px',
-                                        backgroundColor: item.type === "MUSTTRY" ? "#ff5656" : "#ffc850"
+                                        backgroundColor: itemTypeColors[item.type]
                                     }}>
-                                    <div>
+                                         {/* here in the width, i calculated an approx width per letter because the tags for the dishes can be anything other than
+                                            must try or recommended and the tag width must adjust according to that so i ended up at an approx relationship */}
+                                    <div >
 
-                                        <div><div style={{ height: '2px', }}>{item.type === "MUSTTRY" ?
-                                            (<WhatshotIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />) : (<ThumbUpIcon style={{ height: '14px', color: '#fff', marginTop: '2px' }} />)}
+                                        <div><div style={{ height: '2px' }}>{itemTypeIcons[item.type]}
                                         </div> <span style={{ color: '#fff', marginBottom: '10px', marginLeft: '25px', fontSize: 10 }}>  {item.type}</span> </div>
-
-
                                     </div>
 
                                 </div>
@@ -197,11 +121,20 @@ function Recommended(props) {
                                 <div style={{ marginLeft: '-16px' }} onClick={() => handleOpenSlides(item.isCustomised)}>
                                     <div style={{ marginTop: '0', color: '#6d6d6d' }} >{item.name}</div>
                                     <div style={{ marginTop: '10px', color: '#6d6d6d' }}> &#8377;{item.price}</div>
+                                    <div style={{color: "grey", opacity: "0.8", fontSize: "0.8em", marginTop: "5px"}} id={`${props.obj.categoryName} ${index} desc`} className="description">
+
+                                    {/* Here the id of description div consist of the category name plus the index of the dish inside that collection of dishes
+                                        so that we easily get the correct div for expanding it on the click on more button for displaying whole description*/ }
+
+                                        {item.description} 
+                                    </div> {item.description.length > 60? 
+                                    (<span style={{color: "#ff5656"}} id="more" onClick={(event) => showFullDescription(event, props.obj.categoryName,index)} >more...</span>) : (<> </>)}
                                 </div>
                             </div>
+                            
                         </div>
-                        <div style = {{ paddingTop: "95px"}}>
-                            {item.image === "" ? (<div style={{marginLeft: item.type==="MUSTTRY" ? Width*0.45 +'px' : Width*0.35+'px'}}>
+                        <div style = {{ paddingTop: "95px", marginRight: "20px"}}>
+                            {item.image === "" ? (<div style={{marginLeft: "100px", marginTop: "-95px"}} id="add-button-container-without-image">
                                 <div style={{
                                     height: '20px',
                                     width: '70px',
@@ -217,12 +150,15 @@ function Recommended(props) {
                                             item.isCustomised ?
                                                 <MenuCustomisation variants={item.variants} />
                                                 :
-                                                <div
+                                                (<div><div
                                                     style={{ paddingTop: '5px', paddingLeft: '20px', paddingRight: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
-                                                    onClick={() => handleIncrease(index)}
+                                                    onClick={() => handleIncrease(index)} 
                                                 >
-                                                    ADD
+                                                    ADD 
+                                                    
                                                 </div>
+                                                </div>
+                                                )
                                         )
                                         : (
                                             <div style={{
@@ -247,13 +183,15 @@ function Recommended(props) {
                                         //border: "2px solid black",
                                         height: '80px',
                                         marginTop: '4px',
-                                        marginRight: '10px',
                                         borderRadius: '5px',
-                                        marginLeft: Width * 0.28 + 'px',
+                                        marginLeft: '40px',
                                         position: 'absolute',
-
-                                    }} src={item.image} />
-                                        <div style={{ marginLeft: item.type==="MUSTTRY" ? Width*0.45 +'px' : Width*0.35+'px', position: 'relative', paddingTop: '75px' }} >
+                                        right: "5px",
+                                        pointerEvents: "all",
+                                        cursor: "pointer"
+                                    }} onClick={handleOpen} src={item.image}  />
+                                    <ShowDialog index={index} image={item.image} item={item} open={open} onClose={handleClose} onPlus={handleIncrease} onMinus={handleDecrease} openSlides={handleOpenSlides} />
+                                        <div style={{ marginLeft: "100px", position: 'relative', height: "22px", marginTop: "75px" }} id="add-button-container-with-image" >
                                             <div style={{
                                                 height: '20px',
                                                 width: '70px',
@@ -275,8 +213,8 @@ function Recommended(props) {
                                                                 style={{ paddingTop: '5px', paddingLeft: '20px', fontSize: '14px', color: '#ff5656', fontWeight: 700 }}
                                                                 onClick={() => handleIncrease(index)}
                                                             >
-                                                                ADD
-                                                </div>
+                                                                ADD 
+                                                            </div>
                                                     )
                                                     : (
                                                         <div style={{
@@ -314,4 +252,4 @@ const mapDispatchToProps = (dispatch) => ({
     _remove_item: (id) => dispatch(removeItem(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recommended)
+export default connect(mapStateToProps, mapDispatchToProps)(Displaydish)
