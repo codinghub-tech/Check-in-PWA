@@ -59,7 +59,7 @@ export default function MenuListComposition() {
         <div style={{ display: 'flex', justifyContent: 'space-between', }}>
 
             <div>
-                <Button
+                <Button style={{ backgroundColor: '#00888C', color: '#ffffff', width: '5px', marginLeft: '10px', height: '20px' }}
                     ref={anchorRef}
                     aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
@@ -71,8 +71,8 @@ export default function MenuListComposition() {
                         },
                     }}
                 >
-                    All
-            <div style={{ marginBottom: '.5px' }}>     {open ? (<ArrowDropUpIcon />) : (<ArrowDropDownIcon />)}</div>
+                    More
+            <div style={{ marginBottom: '.5px' }}>{open ? (<ArrowDropUpIcon />) : (<ArrowDropDownIcon />)}</div>
 
                 </Button>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
@@ -84,9 +84,7 @@ export default function MenuListComposition() {
                             <Paper>
                                 <ClickAwayListener onClickAway={handleClose}>
                                     <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                        <MenuItem onClick={handleClose}>Food</MenuItem>
-                                        <MenuItem onClick={handleClose}>Drink</MenuItem>
-                                        <MenuItem onClick={handleClose}>Special</MenuItem>
+                                        spicy chilly
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>
@@ -94,7 +92,7 @@ export default function MenuListComposition() {
                     )}
                 </Popper>
             </div>
-            <div style={{ margin: '10px' }}><SearchIcon /></div>
+
         </div>
     );
 }
