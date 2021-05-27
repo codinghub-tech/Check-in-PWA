@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import AbsoluteItems from '../components/AbsoluteComponents'
 import Offers from '../components/Offers'
-import Recommended from '../components/Recommended'
 import CategoriesMenu from '../components/CategoriesMenu'
 import Items from '../components/FoodCategories'
 import BrowseMenu from '../components/BrowseMenu'
@@ -10,6 +9,9 @@ import { useHistory } from 'react-router-dom';
 import { getPromos, loadRecommendedRestaurants } from '../middleware'
 import { connect } from "react-redux"
 import BottomBar from "../components/AbsoluteComponents"
+import Divider from '@material-ui/core/Divider';
+import dishes from '../components/Dishes'
+import Displaydish from '../components/DisplayDish'
 
 function MenuPage(props) {
     const {
@@ -26,10 +28,13 @@ function MenuPage(props) {
         _load_recommended_restaurants()
         _get_promos("11")
     }, [])
+    const windowWidth = window.innerWidth;
+    const ids=dishes.map((dish) => ({name: dish.categoryName, href: dish.id, ndish: dish.data.length}))
+    // console.log(Dishes);
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{width: '100%'}} id="container">
             <div
-                style={{ width: '100%', borderBottom: "1px solid grey" }}
+                style={{ width: "100%", borderBottom: "1px solid grey" }}
             >
                 <div style={{ margin: '15px', display: 'flex' }}>
                     <div>
@@ -37,7 +42,7 @@ function MenuPage(props) {
                     </div>
                     <div>
                         <div style={{ color: "#ff5656" }}>
-                            Menu
+                            Menu 
                         </div>
                         <div style={{ fontSize: '10px', marginTop: '5px' }}>
                             Grey Orange - Lavel Road
@@ -49,10 +54,16 @@ function MenuPage(props) {
 
             <div style={{ position: 'absolute', zIndex: 10, width: '100%', }} > <CategoriesMenu /></div>
             <Items />
-            <Recommended />
-            {/* <ChatWithUs /> */}
-            <BrowseMenu />
-            <BottomBar />
+            {dishes.map((item, index) => {
+                return( 
+                    <div>                                                       
+                        <Displaydish key={item.categoryName} obj = {JSON.parse(JSON.stringify(item))} index = {index}/>
+                        <Divider style={{ height: '10px', width: "100%" }} />             
+                    </div>
+                )
+            })}
+             <BottomBar /> 
+            <BrowseMenu ids={ids}/>
         </div>
     )
 
