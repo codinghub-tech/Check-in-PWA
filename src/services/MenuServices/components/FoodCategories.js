@@ -33,7 +33,7 @@ function Items() {
             <div ><ScrollMenu
 
                 data={categories.map(res =>
-                    <div style={{ height: '90px', width: '60px', margin: '20px' }}>
+                    <div key={res.title} style={{ height: '90px', width: '60px', margin: '20px' }}>
                         <img style={{ height: '60px', width: '40px' }} src={res.image} />
                         <div style={{ color: '#6d6d6d' }}>{res.title}</div>
                     </div>
